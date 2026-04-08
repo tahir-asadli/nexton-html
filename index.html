@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <script src="assets/components.js"></script>
+  <link href="./assets/tailwind.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="flex gap-2 justify-center items-center h-25">
+        <div>
+          <a href="/" class="inline-flex rounded-xl">
+            <img src="assets/logo.svg" alt="">
+          </a>
+        </div>
+        <search-component class="flex justify-center grow">
+          <div class="flex justify-center relative w-100">
+            <input type="text" class="search-input" placeholder="Search in products...">
+            <svg class="size-5 text-brand-gray absolute left-8 top-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.58335 17.5C13.9556 17.5 17.5 13.9556 17.5 9.58333C17.5 5.21108 13.9556 1.66667 9.58335 1.66667C5.2111 1.66667 1.66669 5.21108 1.66669 9.58333C1.66669 13.9556 5.2111 17.5 9.58335 17.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M18.3334 18.3333L16.6667 16.6667" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </search-component>
+        <div class="flex gap-1 items-center ml-auto">
+          <a href="/" class="flex items-center justify-center p-2 rounded-xl">
+            <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="/" class="flex items-center justify-center p-2 rounded-xl">
+            <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M9 8H21" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container py-6">
+    <h1>Heading #1</h1>
+    <h2>Heading #2</h2>
+    <h3>Heading #3</h3>
+    <h4>Heading #4</h4>
+    <h5>Heading #5</h5>
+    <h6>Heading #6</h6>
+  </div>
+  <div class="container py-6 flex flex-col gap-2">
+    <div>
+      <label for="text-input">Text input</label>
+      <input type="text" class="text-input" id="text-input" placeholder="Text input">
+    </div>
+    <div>
+      <button class="button">Default</button>
+    </div>
+    <div>
+      <button class="button gray">Gray</button>
+    </div>
+    <div>
+      <button class="button silver">Silver</button>
+    </div>
+    <div>
+      <button class="button blue">Blue</button>
+    </div>
+    <div>
+      <button class="button cloud">Cloud</button>
+    </div>
+    <div>
+      <button class="button" disabled>Default Disabled</button>
+    </div>
+    <div>
+      <button class="button gray" disabled>Gray Disabled</button>
+    </div>
+    <div>
+      <button class="button silver" disabled>Silver Disabled</button>
+    </div>
+    <div>
+      <button class="button blue" disabled>Blue Disabled</button>
+    </div>
+    <div>
+      <button class="button cloud" disabled>Cloud Disabled</button>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

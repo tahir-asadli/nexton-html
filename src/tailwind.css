@@ -1,0 +1,162 @@
+@import 'tailwindcss';
+
+@source '../*.html';
+@custom-variant hover (&:hover);
+
+@theme {
+  --font-serif: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 36px;
+  --text-4xl: 64px;
+  --text-5xl: 72px;
+  --text-6xl: 80px;
+  /* Brand Colors  */
+  --color-brand-black-400: #2c323f;
+  --color-brand-black: #111827;
+  --color-brand-gray-400: #5d6570;
+  --color-brand-gray: #4b5563;
+  --color-brand-gray-600: #3d444e;
+  --color-brand-blue-400: #23b2f2;
+  --color-brand-blue: #0ea5e9;
+  --color-brand-blue-600: #0e9cdc;
+  --color-brand-silver-400: #efeff0;
+  --color-brand-silver: #e5e7eb;
+  --color-brand-silver-600: #dcdfe3;
+  --color-brand-cloud-400: #f0f1f4;
+  --color-brand-cloud: #f8f8f8;
+  --color-brand-cloud-600: #e2e3e5;
+}
+@layer base {
+  :root {
+    font-size: var(--text-base);
+    font-family: var(--font-serif);
+    color: var(--color-brand-black);
+    accent-color: var(--color-brand-blue);
+    ::selection {
+      background-color: var(--color-brand-blue);
+      color: var(--color-brand-cloud);
+    }
+  }
+  * {
+    @apply box-border;
+  }
+
+  h1,
+  .h1 {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: var(--text-3xl);
+    @variant lg {
+      font-size: var(--text-4xl);
+    }
+  }
+  h2,
+  .h2 {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: var(--text-2xl);
+    @variant lg {
+      font-size: var(--text-3xl);
+    }
+  }
+  h3,
+  .h3 {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: var(--text-xl);
+    @variant lg {
+      font-size: var(--text-2xl);
+    }
+  }
+  h4,
+  .h4 {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: var(--text-base);
+    @variant lg {
+      font-size: var(--text-lg);
+    }
+  }
+  h5,
+  .h5 {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    @variant lg {
+      font-size: var(--text-base);
+    }
+  }
+  h6,
+  .h6 {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: var(--text-xs);
+    @variant lg {
+      font-size: var(--text-sm);
+    }
+  }
+  label {
+    @apply block font-semibold mb-2;
+  }
+}
+@layer components {
+  .button {
+    @apply bg-brand-black text-white rounded-full py-3.5 px-9 cursor-pointer hover:bg-brand-black-400 active:bg-black transition border border-transparent outline-offset-1;
+  }
+  .button.gray {
+    @apply bg-brand-gray hover:bg-brand-gray-400 active:bg-brand-gray-600;
+  }
+  .button.blue {
+    @apply bg-brand-blue hover:bg-brand-blue-400 active:bg-brand-blue-600;
+  }
+  .button.silver {
+    @apply bg-brand-silver text-brand-black hover:bg-brand-silver-400 active:bg-brand-silver-600;
+  }
+  .button.cloud {
+    @apply bg-brand-cloud text-brand-black border-brand-silver hover:bg-brand-cloud-400 active:bg-brand-cloud-600;
+  }
+  .button,
+  .button.gray,
+  .button.blue,
+  .button.silver,
+  .button.cloud {
+    @apply disabled:bg-brand-silver disabled:text-brand-gray disabled:cursor-not-allowed disabled:opacity-70;
+  }
+  .text-input {
+    @apply border border-brand-silver rounded-xl py-2.25 px-5 outline-offset-1;
+  }
+  .search-input {
+    @apply bg-brand-cloud rounded-full py-3.5 pr-6 pl-13.5;
+  }
+}
+@layer utilities {
+  .container {
+    @apply transition-all;
+    /* Apply default horizontal margin for centering */
+    margin-inline: auto;
+    /* Apply default horizontal padding */
+    padding-inline: 1rem;
+
+    /* Customize max-width at specific breakpoints using @variant */
+    @variant sm {
+      max-width: 540px;
+    }
+    @variant md {
+      max-width: 720px;
+    }
+    @variant lg {
+      max-width: 960px;
+    }
+    @variant xl {
+      max-width: 1140px;
+    }
+    @variant 2xl {
+      max-width: 1300px;
+    }
+  }
+}
