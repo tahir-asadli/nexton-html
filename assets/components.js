@@ -6,7 +6,7 @@ const EVENTS = {
 }
 
 const VARIABLES = {
-  cart: ['1']
+  cart: []
 }
 
 document.getElementById('add-to-cart')?.addEventListener('click', (event) => {
@@ -21,11 +21,6 @@ document.getElementById('add-to-cart')?.addEventListener('click', (event) => {
   }, 500)
 });
 
-// document.addEventListener(EVENTS.PRODUCT_ADDED, () => {
-//   document.dispatchEvent(new CustomEvent(EVENTS.PRODUCT_ADDED, {
-//     bubbles: true
-//   }));
-// })
 
 class SearchBar extends HTMLElement {
   constructor() {
