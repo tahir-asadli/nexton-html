@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <script src="assets/components.js"></script>
   <link href="./assets/tailwind.css" rel="stylesheet">
 </head>
 
@@ -20,15 +19,16 @@
             <img src="assets/logo.svg" alt="">
           </a>
         </div>
-        <search-component class="flex justify-center grow">
-          <div class="flex justify-center relative w-100">
-            <input type="text" class="search-input" placeholder="Search in products...">
+        <search-bar class="flex justify-center grow">
+          <form class="flex justify-center relative w-100">
+            <input type="text" class="search-input" name="q" value="" placeholder="Search in products...">
             <svg class="size-5 text-brand-gray absolute left-8 top-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9.58335 17.5C13.9556 17.5 17.5 13.9556 17.5 9.58333C17.5 5.21108 13.9556 1.66667 9.58335 1.66667C5.2111 1.66667 1.66669 5.21108 1.66669 9.58333C1.66669 13.9556 5.2111 17.5 9.58335 17.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M18.3334 18.3333L16.6667 16.6667" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-          </div>
-        </search-component>
+            <button data-clear class="absolute right-6 top-4 border border-brand-gray text-brand-black size-5 rounded-full flex justify-center items-center cursor-pointer" type="button">&times;</button>
+          </form>
+        </search-bar>
         <div class="flex gap-1 items-center ml-auto">
           <a href="/" class="flex items-center justify-center p-2 rounded-xl">
             <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,6 +93,7 @@
     </div>
   </div>
   </div>
+  <script src="assets/components.js"></script>
 </body>
 
 </html>
