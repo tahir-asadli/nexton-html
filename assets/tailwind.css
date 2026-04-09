@@ -12,6 +12,7 @@
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-xs: 12px;
+    --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 14px;
     --text-base: 16px;
     --text-lg: 18px;
@@ -196,11 +197,14 @@
   .relative {
     position: relative;
   }
+  .-top-1 {
+    top: calc(var(--spacing) * -1);
+  }
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
-  .right-4 {
-    right: calc(var(--spacing) * 4);
+  .-right-1 {
+    right: calc(var(--spacing) * -1);
   }
   .right-6 {
     right: calc(var(--spacing) * 6);
@@ -238,9 +242,6 @@
   .inline-flex {
     display: inline-flex;
   }
-  .table {
-    display: table;
-  }
   .size-5 {
     width: calc(var(--spacing) * 5);
     height: calc(var(--spacing) * 5);
@@ -255,20 +256,11 @@
   .w-100 {
     width: calc(var(--spacing) * 100);
   }
-  .flex-grow {
-    flex-grow: 1;
-  }
   .grow {
     flex-grow: 1;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize {
-    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -298,8 +290,8 @@
   .border-brand-gray {
     border-color: var(--color-brand-gray);
   }
-  .border-brand-silver {
-    border-color: var(--color-brand-silver);
+  .bg-brand-blue {
+    background-color: var(--color-brand-blue);
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
@@ -307,18 +299,27 @@
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
   .text-brand-black {
     color: var(--color-brand-black);
   }
   .text-brand-gray {
     color: var(--color-brand-gray);
   }
-  .underline {
-    text-decoration-line: underline;
+  .text-white {
+    color: var(--color-white);
   }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
+  .empty\:hidden {
+    &:empty {
+      display: none;
+    }
   }
 }
 @layer base {
@@ -505,13 +506,22 @@
       max-width: 1300px;
     }
   }
+  .animate-cart {
+    animation: jump 0.5s;
+  }
+}
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 @property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
-@property --tw-outline-style {
   syntax: "*";
   inherits: false;
   initial-value: solid;
@@ -524,7 +534,6 @@
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
-      --tw-outline-style: solid;
       --tw-font-weight: initial;
     }
   }

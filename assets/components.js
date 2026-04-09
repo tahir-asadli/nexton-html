@@ -5,7 +5,27 @@ const EVENTS = {
   CLOSE_CART_DRAWER: 'close-cart-drawer'
 }
 
+const VARIABLES = {
+  cart: ['1']
+}
 
+document.getElementById('add-to-cart')?.addEventListener('click', (event) => {
+  const target = event.currentTarget;
+  target.disabled = true;
+  setTimeout(() => {
+    VARIABLES.cart.push('Product name')
+    document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
+      bubbles: true
+    }));
+    target.disabled = false;
+  }, 500)
+});
+
+// document.addEventListener(EVENTS.PRODUCT_ADDED, () => {
+//   document.dispatchEvent(new CustomEvent(EVENTS.PRODUCT_ADDED, {
+//     bubbles: true
+//   }));
+// })
 
 class SearchBar extends HTMLElement {
   constructor() {
@@ -48,3 +68,32 @@ class SearchBar extends HTMLElement {
   }
 }
 customElements.define('search-bar', SearchBar);
+
+class CartButton extends HTMLElement {
+  constructor() {
+    super();
+    this.cartCount = this.querySelector('[data-cart-count]');
+    this.updateCart = this.updateCart.bind(this);
+  }
+
+  connectedCallback() {
+    this.updateCart(this, true)
+    document.addEventListener(EVENTS.CART_UPDATED, this.updateCart)
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener(EVENTS.CART_UPDATED, this.updateCart);
+  }
+
+  updateCart(self, initial = false) {
+    this.cartCount.textContent = VARIABLES.cart.length ? VARIABLES.cart.length : '';
+    if (initial !== true) {
+      this.cartCount.classList.add('animate-cart');
+      setTimeout(() => {
+        this.cartCount.classList.remove('animate-cart');
+      }, 500);
+    }
+  }
+}
+
+customElements.define('cart-button', CartButton)
