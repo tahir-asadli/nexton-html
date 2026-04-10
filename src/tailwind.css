@@ -133,6 +133,23 @@
   .search-input {
     @apply bg-brand-cloud rounded-full py-3.5 pr-6 pl-13.5;
   }
+  cart-drawer div[data-drawer] {
+    @variant sm {
+      right: calc((100% - 540px) / 2);
+    }
+    @variant md {
+      right: calc((100% - 720px) / 2);
+    }
+    @variant lg {
+      right: calc((100% - 960px) / 2);
+    }
+    @variant xl {
+      right: calc((100% - 1140px) / 2);
+    }
+    @variant 2xl {
+      right: calc((100% - 1300px) / 2);
+    }
+  }
 }
 @layer utilities {
   .container {
@@ -159,6 +176,7 @@
       max-width: 1300px;
     }
   }
+
   .animate-cart {
     animation: jump 0.5s;
   }

@@ -11,8 +11,8 @@
 </head>
 
 <body>
-  <header>
-    <div class="container relative">
+  <header class="border-b border-brand-silver">
+    <div class="container relative bg-white z-1">
       <div class="flex gap-2 justify-center items-center h-25">
         <div>
           <a href="/" class="inline-flex rounded-xl">
@@ -37,7 +37,7 @@
             </svg>
           </a>
           <cart-button>
-            <a href="/" class="flex items-center justify-center p-2 rounded-xl relative">
+            <button data-button class="flex items-center justify-center p-2 rounded-xl relative cursor-pointer">
               <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -45,11 +45,9 @@
                 <path d="M9 8H21" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
               <span data-cart-count class="absolute -top-1 -right-1 bg-brand-blue size-5 flex justify-center items-center text-white rounded-full font-semibold empty:hidden text-xs">1</span>
-            </a>
+            </button>
           </cart-button>
         </div>
-        <cart-drawer class="flex absolute top-25 right-0 w-100 h-120 bg-white shadow">
-        </cart-drawer>
       </div>
     </div>
   </header>
@@ -57,7 +55,7 @@
     <button class="button" id="add-to-cart">Add to cart</button>
   </div>
   <div class="container py-6">
-    <h1>Heading #1</h1>
+    <h1>Heading #1 Heading #1 Heading #1 Heading #1 Heading #1 Heading #1</h1>
     <h2>Heading #2</h2>
     <h3>Heading #3</h3>
     <h4>Heading #4</h4>
@@ -101,6 +99,14 @@
     </div>
   </div>
   </div>
+  <cart-drawer class="">
+    <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 in-[.cart-drawer-open]:h-120 overflow-hidden">
+      <div class="flex border border-brand-silver bg-white/90 drop-shadow h-full backdrop-blur-sm">
+        <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer" data-close>&times;</button>
+      </div>
+    </div>
+    <div data-overlay class="hidden in-[.cart-drawer-open]:block fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
+  </cart-drawer>
   <script src="assets/components.js"></script>
 </body>
 
