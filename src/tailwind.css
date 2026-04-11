@@ -156,6 +156,13 @@
       right: calc((100% - 1300px) / 2);
     }
   }
+  .splide__pagination button.splide__pagination__page {
+    @apply bg-brand-gray-400! rounded-sm! transition-all! duration-500!;
+  }
+  .splide__pagination button.splide__pagination__page.is-active {
+    @apply bg-brand-black! w-10!;
+    transform: scale(1) !important;
+  }
 }
 @layer utilities {
   .container {
