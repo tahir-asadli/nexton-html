@@ -142,40 +142,62 @@ class CartDrawer extends HTMLElement {
 
 customElements.define('cart-drawer', CartDrawer)
 
-const el = document.querySelector('.hero-splide');
-const splideIns = new Splide(el, {
-  type: 'loop',
-  perPage: 1,
-  perMove: 1,
-  pagination: true,
-  arrows: false,
-  autoplay: true,
-  interval: 2000,
-  speed: 2000
+class HeroSlider extends HTMLElement {
+  constructor() {
+    super();
+    this.sliderEl = this.querySelector('.hero-splide');
+    this.splide = null;
+    this.initSlider = this.initSlider.bind(this);
+  }
 
-}).mount();
+  connectedCallback() {
+    this.initSlider();
+  }
 
-splideIns.on('move', function (newIndex, prevIndex, destIndex) {
-  const slides = splideIns.Components.Elements.slides;
-  const slide = slides[newIndex];
-  const title = slide.querySelector('h2');
-  const subtitle = slide.querySelector('h4');
-  const button = slide.querySelector('.button-container');
-  const img = slide.querySelector('img');
-  gsap.fromTo(img,
-    { opacity: 0, y: 100 },
-    { opacity: 1, y: 0, duration: 0.6, delay: 0.2 }
-  );
-  gsap.fromTo(subtitle,
-    { opacity: 0, y: -60 },
-    { opacity: 1, y: 0, duration: 0.3, delay: 0.2 }
-  );
-  gsap.fromTo(title,
-    { opacity: 0, y: -60 },
-    { opacity: 1, y: 0, duration: 0.3, delay: 0.2 }
-  );
-  gsap.fromTo(button,
-    { y: -30 },
-    { y: 0, duration: 0.3, delay: 0.1 }
-  );
-});
+  disconnectedCallback() {
+    if (!this.splide) return;
+    this.splide.destroy();
+  }
+
+  initSlider() {
+    if (!this.sliderEl) return;
+    this.splide = new Splide(this.sliderEl, {
+      type: 'loop',
+      perPage: 1,
+      perMove: 1,
+      pagination: true,
+      arrows: false,
+      autoplay: true,
+      interval: 2000,
+      speed: 2000
+
+    }).mount();
+
+    this.splide.on('move', (newIndex, prevIndex, destIndex) => {
+      const slides = this.splide.Components.Elements.slides;
+      const slide = slides[newIndex];
+      const title = slide.querySelector('h2');
+      const subtitle = slide.querySelector('h4');
+      const button = slide.querySelector('.button-container');
+      const img = slide.querySelector('img');
+      gsap.fromTo(img,
+        { opacity: 0, y: 100 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 0.2 }
+      );
+      gsap.fromTo(subtitle,
+        { opacity: 0, y: -60 },
+        { opacity: 1, y: 0, duration: 0.3, delay: 0.2 }
+      );
+      gsap.fromTo(title,
+        { opacity: 0, y: -60 },
+        { opacity: 1, y: 0, duration: 0.3, delay: 0.2 }
+      );
+      gsap.fromTo(button,
+        { y: -30 },
+        { y: 0, duration: 0.3, delay: 0.1 }
+      );
+    });
+  }
+}
+
+customElements.define('hero-slider', HeroSlider)
