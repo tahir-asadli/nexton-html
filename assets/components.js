@@ -141,3 +141,77 @@ class CartDrawer extends HTMLElement {
 }
 
 customElements.define('cart-drawer', CartDrawer)
+
+const el = document.querySelector('.hero-splide');
+const splideIns = new Splide(el, {
+  type: 'loop',
+  perPage: 1,
+  perMove: 1,
+  pagination: false,
+  arrows: false,
+  autoplay: true,
+  interval: 2000,
+  speed: 2000
+
+}).mount();
+
+splideIns.on('move', function (newIndex, prevIndex, destIndex) {
+  const slides = splideIns.Components.Elements.slides;
+  const slide = slides[newIndex];
+  const title = slide.querySelector('h2');
+  const subtitle = slide.querySelector('h4');
+  const button = slide.querySelector('.button');
+  const img = slide.querySelector('img');
+
+  const pslide = slides[prevIndex];
+  const ptitle = pslide.querySelector('h2');
+  const psubtitle = pslide.querySelector('h4');
+  const pbutton = pslide.querySelector('.button');
+  const pimg = pslide.querySelector('img');
+
+
+  gsap.to(ptitle, {
+    opacity: 0, y: -60
+  })
+  gsap.to(psubtitle, {
+    opacity: 0, y: -60
+  })
+  gsap.to(pbutton, {
+    opacity: 0
+  })
+  gsap.to(pimg, {
+    opacity: 0, y: 100
+  })
+
+
+  // gsap.to(ntitle, {
+  //   opacity: 0, y: -60
+  // })
+  // gsap.to(nsubtitle, {
+  //   opacity: 0, y: -60
+  // })
+  // gsap.to(nbutton, {
+  //   opacity: 0
+  // })
+  // gsap.to(nimg, {
+  //   opacity: 0, y: 100
+  // })
+
+  gsap.fromTo(img,
+    { opacity: 0, y: 100 },
+    { opacity: 1, y: 0, duration: 0.6, delay: 0.2 }
+  );
+  gsap.fromTo(subtitle,
+    { opacity: 0, y: -60 },
+    { opacity: 1, y: 0, duration: 0.3, delay: 0.2 }
+  );
+  gsap.fromTo(title,
+    { opacity: 0, y: -60 },
+    { opacity: 1, y: 0, duration: 0.3, delay: 0.2 }
+  );
+  gsap.fromTo(button,
+    { opacity: 0 },
+    { opacity: 1, duration: 0.3, delay: 0.3 }
+  );
+  // do something
+});
