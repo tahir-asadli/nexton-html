@@ -201,3 +201,44 @@ class HeroSlider extends HTMLElement {
 }
 
 customElements.define('hero-slider', HeroSlider)
+
+class SplideExplore extends HTMLElement {
+  constructor() {
+    super();
+    this.sliderEl = this.querySelector('.splide-explore');
+    this.splide = null;
+    this.initSlider = this.initSlider.bind(this);
+  }
+
+  connectedCallback() {
+    this.initSlider();
+  }
+
+  disconnectedCallback() {
+    if (!this.splide) return;
+    this.splide.destroy();
+  }
+
+  initSlider() {
+    if (!this.sliderEl) return;
+    this.splide = new Splide(this.sliderEl, {
+      type: 'loop',
+      perPage: 3,
+      perMove: 1,
+      pagination: true,
+      arrows: false,
+      autoplay: true,
+      interval: 20000,
+      speed: 2000,
+      gap: 20
+      // padding: '20px',
+
+    }).mount();
+
+  }
+}
+
+customElements.define('splide-explore', SplideExplore)
+
+
+
