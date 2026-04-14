@@ -1,0 +1,75 @@
+[
+  {
+    "title": "Klokers KLOK 01-D2 Heritage",
+    "price": 495,
+    "sale_price": 430,
+    "slug": "klokers",
+    "gallery": [
+      "klokers-klok-01-heritage-42877320.webp",
+      "klokers-klok-01-heritage-1367322027-1.webp",
+      "klokers-klok-01-heritage-1367322027-2.webp",
+      "klokers-klok-01-heritage-1367322027-3.webp",
+      "klokers-klok-01-heritage-1367322027-4.webp"
+    ],
+    "variants": [
+      "klokers-klok-01-heritage-42877320.webp",
+      "klokers-klok-01-heritage-439855713.webp",
+      "klokers-klok-01-heritage-514064881.webp",
+      "klokers-klok-01-heritage-1367322027.webp"
+    ]
+  },
+  {
+    "title": "Ikepod Hemipod HE11",
+    "price": 5900,
+    "sale_price": 3000,
+    "slug": "ikepod",
+    "gallery": [
+      "ikepod-hemipod-he01-gen3-he01-ru-lb.webp",
+      "ikepod-hemipod-he11-day-date-orange-he11-ru-lb-1.jpeg",
+      "ikepod-hemipod-he11-day-date-orange-he11-ru-lb-2.webp",
+      "ikepod-hemipod-he11-day-date-orange-he11-ru-lb-3.webp",
+      "ikepod-hemipod-he11-day-date-orange-he11-ru-lb-4.webp"
+    ],
+    "variants": [
+      "ikepod-hemipod-he01-gen3-he01-ru-lb.webp",
+      "ikepod-hemipod-he02-gen3-he02-ru-lb.webp",
+      "ikepod-hemipod-he10-day-date-blue-he10-ru-lb.webp",
+      "ikepod-hemipod-he11-day-date-orange-he11-ru-lb.webp"
+    ]
+  },
+  {
+    "title": "Praesidus Arctic Field Blue",
+    "price": 220,
+    "sale_price": 100,
+    "slug": "praesidus",
+    "gallery": [
+      "praesidus-arctic-field-blue-p-34-af-mdbl-gyck1.webp",
+      "praesidus-arctic-field-blue-p-34-af-mdbl-ofrk1-1-scaled.webp",
+      "praesidus-arctic-field-blue-p-34-af-mdbl-ofrk1-2-scaled.webp",
+      "praesidus-arctic-field-blue-p-34-af-mdbl-ofrk1-3-scaled.webp",
+      "praesidus-arctic-field-blue-p-34-af-mdbl-ofrk1-4-scaled.webp"
+    ],
+    "variants": [
+      "praesidus-arctic-field-blue-p-34-af-mdbl-gyck1.webp",
+      "praesidus-arctic-field-blue-p-34-af-mdbl-ofrk1.webp",
+      "praesidus-arctic-field-ice-sunray-p-34-af-slb-gyck1.webp",
+      "praesidus-arctic-field-white-p-34-af-mw-gyck1.webp",
+      "praesidus-arctic-field-white-p-34-af-mw-ofrk1.webp"
+    ]
+  },
+  {
+    "title": "Raketa Polar 0300",
+    "price": 2000,
+    "sale_price": 0,
+    "slug": "raketa",
+    "gallery": [
+      "raketa-polar-0300-w-12-19-30-0300.webp",
+      "raketa-polar-0300-w-12-19-30-0300-1-scaled.webp",
+      "raketa-polar-0300-w-12-19-30-0300-2-scaled.webp",
+      "raketa-polar-0300-w-12-19-30-0300-3-scaled.webp",
+      "raketa-polar-0300-w-12-19-30-0300-4-scaled.webp",
+      "raketa-polar-0300-w-12-19-30-0300-5-scaled.webp"
+    ],
+    "variants": []
+  }
+]

@@ -238,5 +238,19 @@ class SplideExplore extends HTMLElement {
 
 customElements.define('splide-explore', SplideExplore)
 
+class ProductCard extends HTMLElement {
+  constructor() {
+    super();
+  }
 
+  connectedCallback() {
+    console.log('ProductCard connected');
+
+  }
+
+  disconnectedCallback() {
+  }
+}
+
+customElements.define('product-card', ProductCard)
 
