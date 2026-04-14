@@ -156,6 +156,8 @@
       right: calc((100% - 1300px) / 2);
     }
   }
+  .splide__pagination {
+  }
   .splide__pagination button.splide__pagination__page {
     @apply bg-brand-gray-400! rounded-sm! transition-all! duration-500!;
   }

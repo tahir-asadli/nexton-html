@@ -231,8 +231,6 @@ class SplideExplore extends HTMLElement {
       interval: 20000,
       speed: 2000,
       gap: 20
-      // padding: '20px',
-
     }).mount();
 
   }
