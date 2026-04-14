@@ -309,6 +309,9 @@
       max-width: 96rem;
     }
   }
+  .my-20 {
+    margin-block: calc(var(--spacing) * 20);
+  }
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
@@ -372,11 +375,17 @@
   .h-25 {
     height: calc(var(--spacing) * 25);
   }
+  .h-85 {
+    height: calc(var(--spacing) * 85);
+  }
   .h-150 {
     height: calc(var(--spacing) * 150);
   }
   .h-full {
     height: 100%;
+  }
+  .max-h-85 {
+    max-height: calc(var(--spacing) * 85);
   }
   .w-0 {
     width: calc(var(--spacing) * 0);
@@ -441,6 +450,9 @@
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -470,6 +482,9 @@
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
+  }
+  .gap-5 {
+    gap: calc(var(--spacing) * 5);
   }
   .gap-6 {
     gap: calc(var(--spacing) * 6);
@@ -583,6 +598,9 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
@@ -595,8 +613,14 @@
   .pr-2 {
     padding-right: calc(var(--spacing) * 2);
   }
+  .pr-2\.5 {
+    padding-right: calc(var(--spacing) * 2.5);
+  }
   .pr-3 {
     padding-right: calc(var(--spacing) * 3);
+  }
+  .pb-6 {
+    padding-bottom: calc(var(--spacing) * 6);
   }
   .pb-8 {
     padding-bottom: calc(var(--spacing) * 8);
@@ -658,6 +682,9 @@
   }
   .text-brand-gray {
     color: var(--color-brand-gray);
+  }
+  .text-brand-gray-400 {
+    color: var(--color-brand-gray-400);
   }
   .text-brand-silver-600 {
     color: var(--color-brand-silver-600);
@@ -807,6 +834,26 @@
   .md\:grid-cols-4 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .\[\&_img\]\:h-full {
+    & img {
+      height: 100%;
+    }
+  }
+  .\[\&_img\]\:w-full {
+    & img {
+      width: 100%;
+    }
+  }
+  .\[\&_img\]\:object-contain {
+    & img {
+      object-fit: contain;
+    }
+  }
+  .\[\&_img\]\:object-cover {
+    & img {
+      object-fit: cover;
     }
   }
 }
