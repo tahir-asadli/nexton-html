@@ -244,8 +244,6 @@ class ProductCard extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log('ProductCard connected');
-
   }
 
   disconnectedCallback() {

@@ -47,18 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
           const featuredImageUrl = `/assets/watches/${slug}/${featuredImage}`;
           let productHTML = PRODUCT_CART_TEMPLATE.replaceAll('{{product_title}}', product.title).replaceAll('{{featuredImageUrl}}', featuredImageUrl).replaceAll("{{url}}", url);
           if (sale_price > 0) {
-
             productHTML = productHTML.replaceAll('{{price}}', `$${sale_price}`)
             productHTML = productHTML.replaceAll('{{sale_price}}', `$${price}`)
           } else {
             productHTML = productHTML.replaceAll('{{price}}', `$${price}`)
             productHTML = productHTML.replaceAll('{{sale_price}}', '')
           }
-          BEST_SELLERS_CONTAINER.innerHTML += productHTML
+          BEST_SELLERS_CONTAINER.innerHTML += "\n" + productHTML
         }
-
-        // Inject into HTML
-        // document.getElementById('output').textContent = `Hello, ${data.name}!`;
       })
       .catch(error => console.error('Error loading JSON:', error));
   }

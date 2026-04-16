@@ -311,6 +311,9 @@
   .mb-10 {
     margin-bottom: calc(var(--spacing) * 10);
   }
+  .mb-22 {
+    margin-bottom: calc(var(--spacing) * 22);
+  }
   .ml-auto {
     margin-left: auto;
   }
@@ -510,8 +513,14 @@
       background-color: color-mix(in oklab, var(--color-white) 90%, transparent);
     }
   }
+  .object-contain {
+    object-fit: contain;
+  }
   .object-cover {
     object-fit: cover;
+  }
+  .object-right {
+    object-position: right;
   }
   .p-0 {
     padding: calc(var(--spacing) * 0);
