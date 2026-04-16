@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <!-- Header -->
   <header class="border-b border-brand-silver">
     <div class="container relative bg-white z-1">
       <div class="flex gap-2 justify-center items-center h-25">
@@ -54,6 +55,7 @@
       </div>
     </div>
   </header>
+  <!-- Hero -->
   <hero-slider>
     <section class="bg-brand-cloud">
       <div class="container">
@@ -384,10 +386,10 @@
       </div>
     </section>
   </splide-explore>
-  <!--  -->
+  <!-- Best Sellers -->
   <section class="my-20">
     <div class="container">
-      <div class="pb-6">
+      <div class="mb-10">
         <h2>Best Sellers. <span class="text-brand-gray-400">Best selling of the month</span></h2>
       </div>
       <div class="grid grid-cols-4 gap-5" id="best-sellers"></div>
@@ -527,54 +529,31 @@
       </div>
     </div>
   </section>
-  <div>
-    <button class="button" id="add-to-cart">Add to cart</button>
-  </div>
-  <div class="container py-6">
-    <h1>Heading #1 Heading #1 Heading #1 Heading #1 Heading #1 Heading #1</h1>
-    <h2>Heading #2</h2>
-    <h3>Heading #3</h3>
-    <h4>Heading #4</h4>
-    <h5>Heading #5</h5>
-    <h6>Heading #6</h6>
-  </div>
-  <div class="container py-6 flex flex-col gap-2">
-    <div>
-      <label for="text-input">Text input</label>
-      <input type="text" class="text-input" id="text-input" placeholder="Text input">
+  <!-- Banner -->
+  <section>
+    <div class="container">
+      <div class="grid grid-cols-2 bg-brand-silver-400 py-10 rounded-4xl">
+        <div class="relative flex items-center py-13 pl-30">
+          <div class="flex flex-col gap-6">
+            <div>
+              <h4 class="text-brand-gray font-medium text-xl mb-4">100% Original Products</h4>
+              <h2 class="">The All New Fashion Collection Items</h2>
+            </div>
+            <h4 class="text-brand-gray font-normal text-xl">Starting from: $59.99</h4>
+            <div class="button-container">
+              <a href="/" class="button  shadow">
+                <span>Shop now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex relative justify-end">
+          <img class="absolute right-0 left-0 m-auto h-full" src="assets/images/banner.png" alt="">
+        </div>
+      </div>
     </div>
-    <div>
-      <button class="button">Default</button>
-    </div>
-    <div>
-      <button class="button gray">Gray</button>
-    </div>
-    <div>
-      <button class="button silver">Silver</button>
-    </div>
-    <div>
-      <button class="button blue">Blue</button>
-    </div>
-    <div>
-      <button class="button cloud">Cloud</button>
-    </div>
-    <div>
-      <button class="button" disabled>Default Disabled</button>
-    </div>
-    <div>
-      <button class="button gray" disabled>Gray Disabled</button>
-    </div>
-    <div>
-      <button class="button silver" disabled>Silver Disabled</button>
-    </div>
-    <div>
-      <button class="button blue" disabled>Blue Disabled</button>
-    </div>
-    <div>
-      <button class="button cloud" disabled>Cloud Disabled</button>
-    </div>
-  </div>
-  </div>
+  </section>
+  <!-- Cart Drawer -->
   <cart-drawer class="">
     <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 in-[.cart-drawer-open]:h-120 overflow-hidden">
       <div class="flex border border-brand-silver bg-white/90 drop-shadow h-full backdrop-blur-sm">
@@ -583,6 +562,7 @@
     </div>
     <div data-overlay class="hidden in-[.cart-drawer-open]:block fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
   </cart-drawer>
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4 py-15">

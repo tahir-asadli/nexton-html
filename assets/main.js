@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const BEST_SELLERS_CONTAINER = document.querySelector('#best-sellers');
   const PRODUCT_CART_TEMPLATE = `<product-card>
           <div class="product-cart h-full max-w-77.5 relative border border-brand-silver-400 rounded-2xl overflow-hidden">
-            <a href="{{url}}" class="flex w-full h-85 [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
+            <a href="{{url}}" class="flex w-full h-85 [&_img]:w-full [&_img]:h-full [&_img]:object-contain">
               <img src="{{featuredImageUrl}}" alt="">
             </a>
             <div class=" p-4 ">
