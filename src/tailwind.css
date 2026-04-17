@@ -30,6 +30,7 @@
   --color-brand-cloud-400: #f0f1f4;
   --color-brand-cloud: #f8f8f8;
   --color-brand-cloud-600: #e2e3e5;
+  --color-brand-yellow: #fbbf24;
 }
 @layer base {
   :root {
@@ -37,6 +38,7 @@
     font-family: var(--font-serif);
     color: var(--color-brand-black);
     accent-color: var(--color-brand-blue);
+    scroll-behavior: smooth;
     ::selection {
       background-color: var(--color-brand-blue);
       color: var(--color-brand-cloud);
@@ -194,6 +196,13 @@
 
   .animate-cart {
     animation: jump 0.5s;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 /* Jump animation */
