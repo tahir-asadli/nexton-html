@@ -9,17 +9,17 @@ const VARIABLES = {
   cart: []
 }
 
-document.getElementById('add-to-cart')?.addEventListener('click', (event) => {
-  const target = event.currentTarget;
-  target.disabled = true;
-  setTimeout(() => {
-    VARIABLES.cart.push('Product name')
-    document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
-      bubbles: true
-    }));
-    target.disabled = false;
-  }, 500)
-});
+// document.getElementById('add-to-cart')?.addEventListener('click', (event) => {
+//   const target = event.currentTarget;
+//   target.disabled = true;
+//   setTimeout(() => {
+//     VARIABLES.cart.push()
+//     document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
+//       bubbles: true
+//     }));
+//     target.disabled = false;
+//   }, 500)
+// });
 
 
 class SearchBar extends HTMLElement {
@@ -133,6 +133,8 @@ class CartDrawer extends HTMLElement {
   }
 
   openDrawer() {
+    console.log('open', VARIABLES);
+
     document.documentElement.classList.add('cart-drawer-open');
   }
   closeDrawer() {
@@ -278,6 +280,7 @@ class QuantityInput extends HTMLElement {
       return;
     }
     this.quantityInput.value = parseInt(this.quantityInput.value) - 1;
+    this.quantityInput.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
   handlePlusClick() {
@@ -286,6 +289,7 @@ class QuantityInput extends HTMLElement {
       return;
     }
     this.quantityInput.value = parseInt(this.quantityInput.value) + 1;
+    this.quantityInput.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
 }
@@ -294,22 +298,51 @@ customElements.define('quantity-input', QuantityInput)
 class ProductForm extends HTMLElement {
   constructor() {
     super();
-
-    // this.quantityInput = this.querySelector("[type=\"number\"]");
+    this.quantityInput = this.querySelector("[type=\"number\"]");
+    this.quantityPrice = this.querySelector("[name=\"price\"]");
+    this.addToCartButton = this.querySelector('button[data-add]')
+    this.quantities = this.querySelectorAll('span[data-quantity]')
+    this.totals = this.querySelectorAll('span[data-total]')
+    this.productTitle = this.querySelector('h1[data-title]')
     // this.minusButton = this.querySelector("[data-minus]");
     // this.plusButton = this.querySelector("[data-plus]");
     // this.handleMinusClick = this.handleMinusClick.bind(this);
     // this.handlePlusClick = this.handlePlusClick.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+    this.updateInfo = this.updateInfo.bind(this);
   }
 
   connectedCallback() {
-    // this.minusButton.addEventListener("click", this.handleMinusClick);
+    this.addToCartButton.addEventListener("click", this.addToCart);
+    this.quantityInput.addEventListener("change", this.updateInfo);
     // this.plusButton.addEventListener("click", this.handlePlusClick);
   }
 
   disconnectedCallback() {
     // this.minusButton.removeEventListener("click", this.handleMinusClick);
     // this.plusButton.removeEventListener("click", this.handlePlusClick);
+  }
+
+  updateInfo() {
+    console.log();
+    this.quantities.forEach((el) => {
+      el.innerHTML = this.quantityInput.value
+    })
+    this.totals.forEach((el) => {
+      el.innerHTML = Math.round(this.quantityInput.value * this.quantityPrice.value * 100) / 100
+    })
+  }
+
+  addToCart() {
+    VARIABLES.cart.push({
+      title: this.productTitle.textContent,
+      price: this.quantityPrice.value,
+      quantity: this.quantityInput.value
+    })
+    document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
+      bubbles: true
+    }));
+    // alert(this.quantityInput.value + this.quantityPrice.value);
   }
 
   // handleMinusClick() {
