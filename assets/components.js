@@ -252,3 +252,80 @@ class ProductCard extends HTMLElement {
 
 customElements.define('product-card', ProductCard)
 
+class QuantityInput extends HTMLElement {
+  constructor() {
+    super();
+
+    this.quantityInput = this.querySelector("[type=\"number\"]");
+    this.minusButton = this.querySelector("[data-minus]");
+    this.plusButton = this.querySelector("[data-plus]");
+    this.handleMinusClick = this.handleMinusClick.bind(this);
+    this.handlePlusClick = this.handlePlusClick.bind(this);
+  }
+
+  connectedCallback() {
+    this.minusButton.addEventListener("click", this.handleMinusClick);
+    this.plusButton.addEventListener("click", this.handlePlusClick);
+  }
+
+  disconnectedCallback() {
+    this.minusButton.removeEventListener("click", this.handleMinusClick);
+    this.plusButton.removeEventListener("click", this.handlePlusClick);
+  }
+
+  handleMinusClick() {
+    if (parseInt(this.quantityInput.value) === 1) {
+      return;
+    }
+    this.quantityInput.value = parseInt(this.quantityInput.value) - 1;
+  }
+
+  handlePlusClick() {
+    const maxQuantity = parseInt(this.quantityInput.getAttribute('max'));
+    if (parseInt(this.quantityInput.value) === maxQuantity) {
+      return;
+    }
+    this.quantityInput.value = parseInt(this.quantityInput.value) + 1;
+  }
+
+}
+customElements.define('quantity-input', QuantityInput)
+
+class ProductForm extends HTMLElement {
+  constructor() {
+    super();
+
+    // this.quantityInput = this.querySelector("[type=\"number\"]");
+    // this.minusButton = this.querySelector("[data-minus]");
+    // this.plusButton = this.querySelector("[data-plus]");
+    // this.handleMinusClick = this.handleMinusClick.bind(this);
+    // this.handlePlusClick = this.handlePlusClick.bind(this);
+  }
+
+  connectedCallback() {
+    // this.minusButton.addEventListener("click", this.handleMinusClick);
+    // this.plusButton.addEventListener("click", this.handlePlusClick);
+  }
+
+  disconnectedCallback() {
+    // this.minusButton.removeEventListener("click", this.handleMinusClick);
+    // this.plusButton.removeEventListener("click", this.handlePlusClick);
+  }
+
+  // handleMinusClick() {
+  //   if (parseInt(this.quantityInput.value) === 1) {
+  //     return;
+  //   }
+  //   this.quantityInput.value = parseInt(this.quantityInput.value) - 1;
+  // }
+
+  // handlePlusClick() {
+  //   const maxQuantity = parseInt(this.quantityInput.getAttribute('max'));
+  //   if (parseInt(this.quantityInput.value) === maxQuantity) {
+  //     return;
+  //   }
+  //   this.quantityInput.value = parseInt(this.quantityInput.value) + 1;
+  // }
+
+}
+customElements.define('product-form', ProductForm)
