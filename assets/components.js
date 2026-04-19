@@ -333,7 +333,9 @@ class ProductForm extends HTMLElement {
     })
   }
 
-  addToCart() {
+  addToCart(e) {
+    e.preventDefault();
+
     VARIABLES.cart.push({
       title: this.productTitle.textContent,
       price: this.quantityPrice.value,

@@ -108,7 +108,7 @@
 }
 @layer components {
   .button {
-    @apply inline-flex items-center gap-2.5 bg-brand-black text-white rounded-full py-3.5 px-9 cursor-pointer hover:bg-brand-black-400 active:bg-black transition border border-transparent outline-offset-1;
+    @apply inline-flex justify-center items-center gap-2.5 bg-brand-black text-white rounded-full py-3.5 px-9 cursor-pointer hover:bg-brand-black-400 active:bg-black transition border border-transparent outline-offset-1;
   }
   .button.gray {
     @apply bg-brand-gray hover:bg-brand-gray-400 active:bg-brand-gray-600;
@@ -128,6 +128,9 @@
   .button.silver,
   .button.cloud {
     @apply disabled:bg-brand-silver disabled:text-brand-gray disabled:cursor-not-allowed disabled:opacity-70;
+  }
+  .button.medium {
+    @apply py-2.5 px-7;
   }
   .button.large {
     @apply py-4.75;
