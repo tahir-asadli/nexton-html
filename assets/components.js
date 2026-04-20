@@ -9,17 +9,6 @@ const VARIABLES = {
   cart: []
 }
 
-// document.getElementById('add-to-cart')?.addEventListener('click', (event) => {
-//   const target = event.currentTarget;
-//   target.disabled = true;
-//   setTimeout(() => {
-//     VARIABLES.cart.push()
-//     document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
-//       bubbles: true
-//     }));
-//     target.disabled = false;
-//   }, 500)
-// });
 
 
 class SearchBar extends HTMLElement {
@@ -85,16 +74,16 @@ class CartButton extends HTMLElement {
     this.cartButton.removeEventListener('click', this.toggleDrawer);
   }
 
-  updateCart(self, initial = false) {
-    this.cartCount.textContent = VARIABLES.cart.length ? VARIABLES.cart.length : '';
+  updateCart(event, initial = false) {
+    console.log(event.detail);
+
+    this.cartCount.textContent = cart.count ? cart.count : '';
     if (initial !== true) {
       this.cartCount.classList.add('animate-cart');
-      setTimeout(() => {
-        this.cartCount.classList.remove('animate-cart');
-        document.dispatchEvent(new CustomEvent(EVENTS.OPEN_CART_DRAWER, {
-          bubbles: true
-        }));
-      }, 500);
+      this.cartCount.classList.remove('animate-cart');
+      document.dispatchEvent(new CustomEvent(EVENTS.OPEN_CART_DRAWER, {
+        bubbles: true
+      }));
     }
   }
 
@@ -112,37 +101,114 @@ class CartDrawer extends HTMLElement {
     super();
     this.closeButton = this.querySelector('[data-close]')
     this.drawer = this.querySelector('[data-drawer]')
+    this.drawerContent = this.querySelector('[data-drawer-content]')
     this.overlay = this.querySelector('[data-overlay]')
 
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
+    this.onEscape = this.onEscape.bind(this);
   }
 
   connectedCallback() {
     document.addEventListener(EVENTS.OPEN_CART_DRAWER, this.openDrawer)
     document.addEventListener(EVENTS.CLOSE_CART_DRAWER, this.closeDrawer)
-    this.closeButton.addEventListener('click', this.closeDrawer)
+    document.addEventListener('keydown', this.onEscape);
+    // this.closeButton.addEventListener('click', this.closeDrawer)
     this.overlay.addEventListener('click', this.closeDrawer)
   }
+
 
   disconnectedCallback() {
     document.removeEventListener(EVENTS.OPEN_CART_DRAWER, this.openDrawer);
     document.removeEventListener(EVENTS.CLOSE_CART_DRAWER, this.closeDrawer);
-    this.closeButton.removeEventListener('click', this.closeDrawer)
+    document.removeEventListener('keydown', this.onEscape);
+    // this.closeButton.removeEventListener('click', this.closeDrawer)
     this.overlay.removeEventListener('click', this.closeDrawer)
   }
 
-  openDrawer() {
-    console.log('open', VARIABLES);
+  onEscape(event) {
+    if (event.key === 'Escape') {
+      this.closeDrawer();
+    }
+  }
 
+  openDrawer(event) {
+    const items = cart.items();
+    if (items.length) {
+      this.drawerContent.innerHTML = ''
+      items.map((item, index) => {
+        this.drawerContent.innerHTML += `<cart-item data-index="${index}">
+        <div class="flex gap-6 relative py-2">
+                  <div class="flex w-24 h-27 shrink-0">
+                    <img class="w-full h-full object-contain" src="${item.image}" alt="">
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-base">${item.title}</h3>
+                    <div class="text-brand-gray text-sm">Size: M</div>
+                    <div class="text-brand-gray text-sm">Qty: ${item.quantity}</div>
+                  </div>
+                  <button data-remove class="absolute bottom-0 right-0 size-6 rounded-full flex justify-center items-center cursor-pointer">
+                    <svg class="size-4" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M216,50H174V40a22,22,0,0,0-22-22H104A22,22,0,0,0,82,40V50H40a6,6,0,0,0,0,12H50V208a14,14,0,0,0,14,14H192a14,14,0,0,0,14-14V62h10a6,6,0,0,0,0-12ZM94,40a10,10,0,0,1,10-10h48a10,10,0,0,1,10,10V50H94ZM194,208a2,2,0,0,1-2,2H64a2,2,0,0,1-2-2V62H194ZM110,104v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Zm48,0v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Z"></path>
+                    </svg>
+                  </button>
+                  <div class="flex items-center ml-auto">
+                    <div class="text-right">
+                      <div class="font-semibold">$169.99</div>
+                      <div class="text-sm text-brand-gray"><s>$199.99</s></div>
+                    </div>
+                  </div>
+                </div>
+                </cart-item>`;
+
+      })
+      console.log('this.drawerContent updated', this.drawerContent.scrollHeight);
+
+    } else {
+      this.drawerContent.innerHTML = `<div class="py-6 text-center text-brand-gray">Cart is empty</div>`;
+    }
+    const contentHeight = this.drawerContent.scrollHeight;
+    console.log('contentHeight', contentHeight);
+
+    this.drawer.style.height = (contentHeight) + 'px';
     document.documentElement.classList.add('cart-drawer-open');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
   closeDrawer() {
+    this.drawer.style.height = '0px';
     document.documentElement.classList.remove('cart-drawer-open');
   }
 }
 
 customElements.define('cart-drawer', CartDrawer)
+
+
+class CartItem extends HTMLElement {
+  constructor() {
+    super();
+    this.removeButton = this.querySelector('[data-remove]');
+    this.index = this.dataset.index;
+  }
+
+  connectedCallback() {
+    this.removeButton.addEventListener('click', () => {
+
+      const items = cart.remove(this.dataset.index);
+      this.removeButton.closest('cart-item').remove();
+      document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
+        bubbles: true
+      }));
+    })
+  }
+
+  disconnectedCallback() {
+  }
+}
+
+customElements.define('cart-item', CartItem)
 
 class HeroSlider extends HTMLElement {
   constructor() {
@@ -243,12 +309,43 @@ customElements.define('splide-explore', SplideExplore)
 class ProductCard extends HTMLElement {
   constructor() {
     super();
+
+    this.addToCartButton = this.querySelector('[data-add-to-cart]')
+    this.addToCart = this.addToCart.bind(this)
+    this.dataUrl = this.querySelector('[data-url]');
+    this.dataImg = this.querySelector('[data-img]');
+    this.dataTitle = this.querySelector('[data-title]');
+    this.dataPrice = this.querySelector('[data-price]');
+    console.log('data-add-to-cart', this.addToCartButton);
+
   }
 
   connectedCallback() {
+    this.addToCartButton.addEventListener('click', this.addToCart);
   }
 
   disconnectedCallback() {
+    this.addToCartButton.removeEventListener('click', this.addToCart);
+  }
+
+  addToCart() {
+    console.log('this.dataUrl', this.dataUrl.href);
+
+    console.log('this.dataImg', this.dataImg.src);
+
+    console.log('this.dataTitle', this.dataTitle.textContent);
+
+    console.log('this.dataPrice', this.dataPrice.textContent);
+
+    const items = cart.add({
+      title: this.dataTitle.textContent,
+      quantity: 1,
+      price: this.dataPrice.textContent.replace('$', ''),
+      image: this.dataImg.src
+    })
+    document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
+      bubbles: true
+    }));
   }
 }
 
@@ -304,10 +401,7 @@ class ProductForm extends HTMLElement {
     this.quantities = this.querySelectorAll('span[data-quantity]')
     this.totals = this.querySelectorAll('span[data-total]')
     this.productTitle = this.querySelector('h1[data-title]')
-    // this.minusButton = this.querySelector("[data-minus]");
-    // this.plusButton = this.querySelector("[data-plus]");
-    // this.handleMinusClick = this.handleMinusClick.bind(this);
-    // this.handlePlusClick = this.handlePlusClick.bind(this);
+    this.productImage = this.querySelector('img[data-img]')
     this.addToCart = this.addToCart.bind(this);
     this.updateInfo = this.updateInfo.bind(this);
   }
@@ -315,12 +409,11 @@ class ProductForm extends HTMLElement {
   connectedCallback() {
     this.addToCartButton.addEventListener("click", this.addToCart);
     this.quantityInput.addEventListener("change", this.updateInfo);
-    // this.plusButton.addEventListener("click", this.handlePlusClick);
   }
 
   disconnectedCallback() {
-    // this.minusButton.removeEventListener("click", this.handleMinusClick);
-    // this.plusButton.removeEventListener("click", this.handlePlusClick);
+    this.addToCartButton.removeEventListener("click", this.addToCart);
+    this.quantityInput.removeEventListener("change", this.updateInfo);
   }
 
   updateInfo() {
@@ -336,31 +429,16 @@ class ProductForm extends HTMLElement {
   addToCart(e) {
     e.preventDefault();
 
-    VARIABLES.cart.push({
+    const items = cart.add({
       title: this.productTitle.textContent,
       price: this.quantityPrice.value,
-      quantity: this.quantityInput.value
+      quantity: this.quantityInput.value,
+      image: this.productImage.src
     })
     document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
       bubbles: true
     }));
-    // alert(this.quantityInput.value + this.quantityPrice.value);
   }
-
-  // handleMinusClick() {
-  //   if (parseInt(this.quantityInput.value) === 1) {
-  //     return;
-  //   }
-  //   this.quantityInput.value = parseInt(this.quantityInput.value) - 1;
-  // }
-
-  // handlePlusClick() {
-  //   const maxQuantity = parseInt(this.quantityInput.getAttribute('max'));
-  //   if (parseInt(this.quantityInput.value) === maxQuantity) {
-  //     return;
-  //   }
-  //   this.quantityInput.value = parseInt(this.quantityInput.value) + 1;
-  // }
 
 }
 customElements.define('product-form', ProductForm)

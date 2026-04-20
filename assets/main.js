@@ -1,20 +1,53 @@
+class Cart {
+  items() {
+    return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+  }
+  add(product) {
+    const items = this.items();
+    items.push(product)
+    localStorage.setItem('cart', JSON.stringify(items))
+    return this.items();
+  }
+  remove(productIndex) {
+    localStorage.setItem('cart', JSON.stringify(this.items().filter((item, index) => index != productIndex)))
+    return this.items();
+  }
+  clear() {
+    localStorage.setItem('cart', null);
+    return this.items();
+  }
+  get count() {
+    return this.items().length
+  }
+}
+
+const cart = new Cart();
+// console.log(cart.add({
+//   title: 'Product title',
+//   quantity: 1,
+//   price: 2
+// }));
+
+console.log('cart.count', cart.count, cart.items());
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const BEST_SELLERS_CONTAINER = document.querySelector('#best-sellers');
   const PRODUCT_CART_TEMPLATE = `<product-card>
           <div class="product-cart h-full max-w-77.5 relative border border-brand-silver-400 rounded-2xl overflow-hidden">
-            <a href="{{url}}" class="flex w-full h-85 [&_img]:w-full [&_img]:h-full [&_img]:object-contain">
-              <img src="{{featuredImageUrl}}" alt="">
+            <a data-url href="{{url}}" class="flex w-full h-85 [&_img]:w-full [&_img]:h-full [&_img]:object-contain">
+              <img data-img src="{{featuredImageUrl}}" alt="">
             </a>
             <div class=" p-4 ">
               <div class="flex gap-2 justify-between">
                 <div class="flex flex-col gap-0.25">
                   <a href="{{url}}">
-                    <h5>{{product_title}}</h5>
+                    <h5 data-title>{{product_title}}</h5>
                   </a>
                   <div class="text-sm text-brand-gray">Accessories</div>
                 </div>
                 <div class="flex flex-col gap-0.25 text-right">
-                  <div class="font-semibold">{{price}}</div>
+                  <div data-price class="font-semibold">{{price}}</div>
                   <div class="text-sm text-brand-gray empty:hidden"><s class="empty:hidden">{{sale_price}}</s></div>
                 </div>
               </div>
@@ -22,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
               <div class="text-sm text-brand-gray"><span class="text-orange-300 text-xl">&starf;</span>4.9(98)</div>
             </div>
-            <button class="button cloud p-0 max-w-9 h-9 flex gap-0 overflow-hidden items-center text-center absolute top-4 right-4 group transition-all hover:justify-between hover:max-w-full duration-500 text-nowrap delay-[0]">
+            <button data-add-to-cart class="button cloud p-0 max-w-9 h-9 flex gap-0 overflow-hidden justify-start items-center absolute top-4 right-4 group transition-all hover:justify-between hover:max-w-full duration-500 text-nowrap delay-[0]">
               <span class="px-2.5 flex items-center">
                 <svg class="size-4 shrink-0 relative top-[-1px] left-[-1px]" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.33329 7.33337C5.70149 7.33337 5.99996 7.63185 5.99996 8.00004C5.99996 9.10461 6.89539 10 7.99996 10C9.10453 10 9.99996 9.10461 9.99996 8.00004C9.99996 7.63185 10.2984 7.33337 10.6666 7.33337C11.0348 7.33337 11.3333 7.63185 11.3333 8.00004C11.3333 9.84098 9.8409 11.3334 7.99996 11.3334C6.15902 11.3334 4.66663 9.84098 4.66663 8.00004C4.66663 7.63185 4.9651 7.33337 5.33329 7.33337Z" fill="currentColor" />

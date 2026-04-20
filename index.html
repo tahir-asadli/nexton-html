@@ -423,10 +423,12 @@
     </div>
   </section>
   <!-- Cart Drawer -->
-  <cart-drawer class="">
-    <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 in-[.cart-drawer-open]:h-120 overflow-hidden">
-      <div class="flex border border-brand-silver bg-white/90 drop-shadow h-full backdrop-blur-sm">
-        <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer" data-close>&times;</button>
+  <cart-drawer>
+    <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 max-h-120 overflow-hidden">
+      <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
+      <div style="height: initial" class="flex border border-brand-silver bg-white/90 drop-shadow backdrop-blur-sm overflow-y-scroll hide-scrollbar">
+        <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-full max-h-114">
+        </div>
       </div>
     </div>
     <div data-overlay class="hidden in-[.cart-drawer-open]:block fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
@@ -520,8 +522,8 @@
       </div>
     </div>
   </footer>
-  <script src="assets/components.js"></script>
   <script src="assets/main.js"></script>
+  <script src="assets/components.js"></script>
 </body>
 
 </html>

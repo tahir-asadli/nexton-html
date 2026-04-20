@@ -72,12 +72,12 @@
       <div class="grid lg:grid-cols-12 gap-10 mb-20">
         <div class="lg:col-span-7">
           <h2 class="h3 mb-6">Your cart</h2>
-          <div class=" p-6 border border-brand-silver rounded-2xl">
+          <div class="p-6 border border-brand-silver rounded-2xl">
             <!-- Items -->
             <div class="flex flex-col gap-6">
-              <div class="flex gap-6">
+              <div class="flex gap-6 relative">
                 <div class="flex w-24 h-27">
-                  <img src="http://127.0.0.1:35179/assets/watches/klokers/klokers-klok-01-heritage-42877320.webp" alt="">
+                  <img src="/assets/watches/klokers/klokers-klok-01-heritage-42877320.webp" alt="">
                 </div>
                 <div>
                   <h3 class="font-semibold text-base">Klokers KLOK 01-D2 Heritage</h3>
@@ -90,6 +90,11 @@
                     </quantity-input>
                   </div>
                 </div>
+                <button class="absolute top-0 right-0 size-6 rounded-full flex justify-center items-center cursor-pointer">
+                  <svg class="size-4" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M216,50H174V40a22,22,0,0,0-22-22H104A22,22,0,0,0,82,40V50H40a6,6,0,0,0,0,12H50V208a14,14,0,0,0,14,14H192a14,14,0,0,0,14-14V62h10a6,6,0,0,0,0-12ZM94,40a10,10,0,0,1,10-10h48a10,10,0,0,1,10,10V50H94ZM194,208a2,2,0,0,1-2,2H64a2,2,0,0,1-2-2V62H194ZM110,104v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Zm48,0v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Z"></path>
+                  </svg>
+                </button>
                 <div class="flex items-center ml-auto">
                   <div class="text-right">
                     <div class="font-semibold">$169.99</div>
@@ -99,7 +104,7 @@
               </div>
               <div class="flex gap-6">
                 <div class="flex w-24 h-27">
-                  <img src="http://127.0.0.1:35179/assets/watches/undone/undone-urban-vintage-pistachio-crisp-urb-vnt-grn.webp" alt="">
+                  <img src="/assets/watches/undone/undone-urban-vintage-pistachio-crisp-urb-vnt-grn.webp" alt="">
                 </div>
                 <div>
                   <h3 class="font-semibold text-base">Undone Urban Vintage Pistachio Crisp</h3>
@@ -119,9 +124,9 @@
                   </div>
                 </div>
               </div>
-              <div class="flex gap-6">
+              <div class="flex gap-6 relative">
                 <div class="flex w-24 h-27">
-                  <img src="http://127.0.0.1:35179/assets/watches/klokers/klokers-klok-01-heritage-42877320.webp" alt="">
+                  <img src="/assets/watches/klokers/klokers-klok-01-heritage-42877320.webp" alt="">
                 </div>
                 <div>
                   <h3 class="font-semibold text-base">Klokers KLOK 01-D2 Heritage</h3>
@@ -140,10 +145,15 @@
                     <div class="text-sm text-brand-gray"><s>$199.99</s></div>
                   </div>
                 </div>
+                <button class="absolute top-0 right-0 size-6 rounded-full flex justify-center items-center cursor-pointer">
+                  <svg class="size-4" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M216,50H174V40a22,22,0,0,0-22-22H104A22,22,0,0,0,82,40V50H40a6,6,0,0,0,0,12H50V208a14,14,0,0,0,14,14H192a14,14,0,0,0,14-14V62h10a6,6,0,0,0,0-12ZM94,40a10,10,0,0,1,10-10h48a10,10,0,0,1,10,10V50H94ZM194,208a2,2,0,0,1-2,2H64a2,2,0,0,1-2-2V62H194ZM110,104v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Zm48,0v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Z"></path>
+                  </svg>
+                </button>
               </div>
               <div class="flex gap-6">
                 <div class="flex w-24 h-27">
-                  <img src="http://127.0.0.1:35179/assets/watches/undone/undone-urban-vintage-pistachio-crisp-urb-vnt-grn.webp" alt="">
+                  <img src="/assets/watches/undone/undone-urban-vintage-pistachio-crisp-urb-vnt-grn.webp" alt="">
                 </div>
                 <div>
                   <h3 class="font-semibold text-base">Undone Urban Vintage Pistachio Crisp</h3>
@@ -198,11 +208,11 @@
     </div>
   </section>
   <!-- Cart Drawer -->
-  <cart-drawer class="">
-    <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 in-[.cart-drawer-open]:h-120 overflow-hidden">
+  <cart-drawer>
+    <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 in-[.cart-drawer-open]:h-120 overflow-hidden shadow">
       <div class="flex border border-brand-silver bg-white/90 drop-shadow h-full backdrop-blur-sm">
-        <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer" data-close>&times;</button>
-        <div>contentasdasd</div>
+        <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button>
+        <div data-drawer-content class="py-10 px-6 flex flex-col gap-6 overflow-y-scroll"></div>
       </div>
     </div>
     <div data-overlay class="hidden in-[.cart-drawer-open]:block fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
@@ -296,8 +306,8 @@
       </div>
     </div>
   </footer>
-  <script src="assets/components.js"></script>
   <script src="assets/main.js"></script>
+  <script src="assets/components.js"></script>
 </body>
 
 </html>

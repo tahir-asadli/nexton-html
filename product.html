@@ -81,7 +81,7 @@
               </div>
             </div>
             <div class="min-h-0">
-              <img class="w-full h-full object-contain" src="/assets/watches/klokers/klokers-klok-01-heritage-1367322027.webp" alt="">
+              <img class="w-full h-full object-contain" data-img src="/assets/watches/klokers/klokers-klok-01-heritage-1367322027.webp" alt="">
             </div>
           </div>
           <div class="col-span-3">
@@ -209,11 +209,11 @@
     </div>
   </section>
   <!-- Cart Drawer -->
-  <cart-drawer class="">
-    <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 in-[.cart-drawer-open]:h-120 overflow-hidden">
+  <cart-drawer>
+    <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 in-[.cart-drawer-open]:h-120 overflow-hidden shadow">
       <div class="flex border border-brand-silver bg-white/90 drop-shadow h-full backdrop-blur-sm">
-        <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer" data-close>&times;</button>
-        <div>contentasdasd</div>
+        <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button>
+        <div data-drawer-content class="py-10 px-6 flex flex-col gap-6 overflow-y-scroll"></div>
       </div>
     </div>
     <div data-overlay class="hidden in-[.cart-drawer-open]:block fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
@@ -307,8 +307,8 @@
       </div>
     </div>
   </footer>
-  <script src="assets/components.js"></script>
   <script src="assets/main.js"></script>
+  <script src="assets/components.js"></script>
 </body>
 
 </html>
