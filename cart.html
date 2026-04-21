@@ -74,34 +74,36 @@
           <h2 class="h3 mb-6">Your cart</h2>
           <div class="p-6 border border-brand-silver rounded-2xl">
             <!-- Items -->
-            <div class="flex flex-col gap-6">
-              <div class="flex gap-6 relative">
-                <div class="flex w-24 h-27">
-                  <img src="/assets/watches/klokers/klokers-klok-01-heritage-42877320.webp" alt="">
-                </div>
-                <div>
-                  <h3 class="font-semibold text-base">Klokers KLOK 01-D2 Heritage</h3>
-                  <div class="text-brand-gray text-sm">Size: M</div>
-                  <div class="mt-5">
-                    <quantity-input>
-                      <button type="button" data-minus>&minus;</button>
-                      <input type="number" value="1">
-                      <button type="button" data-plus>&plus;</button>
-                    </quantity-input>
+            <div class="flex flex-col gap-6" id="cart-container">
+              <!-- <cart-item>
+                <div class="flex gap-6 relative">
+                  <div class="flex w-24 h-27">
+                    <img src="/assets/watches/klokers/klokers-klok-01-heritage-42877320.webp" alt="">
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-base">Klokers KLOK 01-D2 Heritage</h3>
+                    <div class="text-brand-gray text-sm">Size: M</div>
+                    <div class="mt-5">
+                      <quantity-input>
+                        <button type="button" data-minus>&minus;</button>
+                        <input type="number" value="1">
+                        <button type="button" data-plus>&plus;</button>
+                      </quantity-input>
+                    </div>
+                  </div>
+                  <button data-remove class="absolute top-0 right-0 size-6 rounded-full flex justify-center items-center cursor-pointer">
+                    <svg class="size-4" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M216,50H174V40a22,22,0,0,0-22-22H104A22,22,0,0,0,82,40V50H40a6,6,0,0,0,0,12H50V208a14,14,0,0,0,14,14H192a14,14,0,0,0,14-14V62h10a6,6,0,0,0,0-12ZM94,40a10,10,0,0,1,10-10h48a10,10,0,0,1,10,10V50H94ZM194,208a2,2,0,0,1-2,2H64a2,2,0,0,1-2-2V62H194ZM110,104v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Zm48,0v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Z"></path>
+                    </svg>
+                  </button>
+                  <div class="flex items-center ml-auto">
+                    <div class="text-right">
+                      <div class="font-semibold">$169.99</div>
+                      <div class="text-sm text-brand-gray"><s>$199.99</s></div>
+                    </div>
                   </div>
                 </div>
-                <button class="absolute top-0 right-0 size-6 rounded-full flex justify-center items-center cursor-pointer">
-                  <svg class="size-4" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M216,50H174V40a22,22,0,0,0-22-22H104A22,22,0,0,0,82,40V50H40a6,6,0,0,0,0,12H50V208a14,14,0,0,0,14,14H192a14,14,0,0,0,14-14V62h10a6,6,0,0,0,0-12ZM94,40a10,10,0,0,1,10-10h48a10,10,0,0,1,10,10V50H94ZM194,208a2,2,0,0,1-2,2H64a2,2,0,0,1-2-2V62H194ZM110,104v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Zm48,0v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Z"></path>
-                  </svg>
-                </button>
-                <div class="flex items-center ml-auto">
-                  <div class="text-right">
-                    <div class="font-semibold">$169.99</div>
-                    <div class="text-sm text-brand-gray"><s>$199.99</s></div>
-                  </div>
-                </div>
-              </div>
+              </cart-item>
               <div class="flex gap-6">
                 <div class="flex w-24 h-27">
                   <img src="/assets/watches/undone/undone-urban-vintage-pistachio-crisp-urb-vnt-grn.webp" alt="">
@@ -172,7 +174,7 @@
                     <div class="text-sm text-brand-gray"><s>$199.99</s></div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

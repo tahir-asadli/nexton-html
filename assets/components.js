@@ -190,21 +190,26 @@ class CartItem extends HTMLElement {
   constructor() {
     super();
     this.removeButton = this.querySelector('[data-remove]');
-    this.index = this.dataset.index;
+    this.removeItem = this.removeItem.bind(this);
   }
 
   connectedCallback() {
-    this.removeButton.addEventListener('click', () => {
-
-      const items = cart.remove(this.dataset.index);
-      this.removeButton.closest('cart-item').remove();
-      document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
-        bubbles: true
-      }));
-    })
+    this.removeButton.addEventListener('click', this.removeItem)
   }
 
+
   disconnectedCallback() {
+    this.removeButton.removeEventListener('click', this.removeItem)
+  }
+
+  removeItem() {
+    const items = cart.remove(this.dataset.index);
+    console.log('remove', this.dataset.index);
+
+    this.removeButton.closest('cart-item').remove();
+    document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
+      bubbles: true
+    }));
   }
 }
 
