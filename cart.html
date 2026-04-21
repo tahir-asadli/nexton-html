@@ -211,13 +211,24 @@
   </section>
   <!-- Cart Drawer -->
   <cart-drawer>
-    <div data-drawer class="absolute z-3 top-25 w-100 transition-all h-0 in-[.cart-drawer-open]:h-120 overflow-hidden shadow">
-      <div class="flex border border-brand-silver bg-white/90 drop-shadow h-full backdrop-blur-sm">
-        <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button>
-        <div data-drawer-content class="py-10 px-6 flex flex-col gap-6 overflow-y-scroll"></div>
+    <div data-drawer class="absolute z-3 top-25 w-100">
+      <!-- transition-all  -->
+      <div data-drawer-container class="max-h-120 overflow-scroll border border-brand-silver bg-white/90 backdrop-blur-sm hide-scrollbar h-0 in-[.cart-drawer-open]:h-auto">
+        <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
+        <div data-drawer-container-inner class="flex flex-col">
+          <!-- max-h-114   -->
+          <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-fullborder-b border-brand-silver">
+            <div class="flex flex-col gap-3" data-drawer-items></div>
+            <div data-drawer-footer class="flex flex-col gap-2 items-center py-3">
+              <a href="/cart.html" class="button gray medium w-60">View cart</a>
+              <a href="/" class="button ghost medium w-60 bg-transparent underline">Continue shopping</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div data-overlay class="hidden in-[.cart-drawer-open]:block fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
+    <!-- in-[.cart-drawer-open]:block  -->
+    <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
   </cart-drawer>
   <!-- Footer -->
   <footer>

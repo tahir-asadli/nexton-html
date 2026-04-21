@@ -129,6 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const cartItemHTML = CART_ITEM_TEMPLATE.replaceAll('{{title}}', item.title).replaceAll('{{index}}', index).replaceAll('{{price}}', item.price).replaceAll('{{image}}', item.image)
         CART_CONTAINER.innerHTML += cartItemHTML
       })
+    } else {
+      CART_CONTAINER.innerHTML = '<div class="py-6 text-center text-brand-gray">Cart is empty</div>';
     }
   }
 });

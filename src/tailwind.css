@@ -122,10 +122,14 @@
   .button.cloud {
     @apply bg-brand-cloud text-brand-black border-brand-silver hover:bg-brand-cloud-400 active:bg-brand-cloud-600;
   }
+  .button.ghost {
+    @apply bg-white text-brand-black border-0 hover:bg-brand-cloud-400 active:bg-brand-cloud-600;
+  }
   .button,
   .button.gray,
   .button.blue,
   .button.silver,
+  .button.ghost,
   .button.cloud {
     @apply disabled:bg-brand-silver disabled:text-brand-gray disabled:cursor-not-allowed disabled:opacity-70;
   }

@@ -75,8 +75,6 @@ class CartButton extends HTMLElement {
   }
 
   updateCart(event, initial = false) {
-    console.log(event.detail);
-
     this.cartCount.textContent = cart.count ? cart.count : '';
     if (initial !== true) {
       this.cartCount.classList.add('animate-cart');
@@ -101,7 +99,10 @@ class CartDrawer extends HTMLElement {
     super();
     this.closeButton = this.querySelector('[data-close]')
     this.drawer = this.querySelector('[data-drawer]')
+    this.drawerContainer = this.querySelector('[data-drawer-container]')
+    this.drawerContainerInner = this.querySelector('[data-drawer-container-inner]')
     this.drawerContent = this.querySelector('[data-drawer-content]')
+    this.drawerItems = this.querySelector('[data-drawer-items]')
     this.overlay = this.querySelector('[data-overlay]')
 
     this.openDrawer = this.openDrawer.bind(this);
@@ -113,6 +114,7 @@ class CartDrawer extends HTMLElement {
     document.addEventListener(EVENTS.OPEN_CART_DRAWER, this.openDrawer)
     document.addEventListener(EVENTS.CLOSE_CART_DRAWER, this.closeDrawer)
     document.addEventListener('keydown', this.onEscape);
+    document.addEventListener('click', this.onEscape)
     // this.closeButton.addEventListener('click', this.closeDrawer)
     this.overlay.addEventListener('click', this.closeDrawer)
   }
@@ -122,6 +124,7 @@ class CartDrawer extends HTMLElement {
     document.removeEventListener(EVENTS.OPEN_CART_DRAWER, this.openDrawer);
     document.removeEventListener(EVENTS.CLOSE_CART_DRAWER, this.closeDrawer);
     document.removeEventListener('keydown', this.onEscape);
+    document.removeEventListener('click', this.onEscape);
     // this.closeButton.removeEventListener('click', this.closeDrawer)
     this.overlay.removeEventListener('click', this.closeDrawer)
   }
@@ -129,56 +132,65 @@ class CartDrawer extends HTMLElement {
   onEscape(event) {
     if (event.key === 'Escape') {
       this.closeDrawer();
+    } else {
+      if (event.target.closest('cart-button')) {
+        console.log('parent cart-button');
+      } else if (event.target.closest('cart-drawer')) {
+        console.log('parent cart-drawer');
+      } else if (event.target.closest('button[data-add-to-cart]')) {
+        console.log('parent add to cart button');
+      } else if (event.target.closest('button[data-remove]')) {
+        console.log('parent remove button');
+      }
+      if (!event.target.closest('cart-button') && !event.target.closest('cart-drawer') && !event.target.closest('button[data-add-to-cart]') && !event.target.closest('button[data-remove]')) {
+        this.closeDrawer();
+      }
     }
   }
 
   openDrawer(event) {
+    document.documentElement.classList.add('cart-drawer-open');
     const items = cart.items();
     if (items.length) {
-      this.drawerContent.innerHTML = ''
+      this.drawerItems.innerHTML = ''
       items.map((item, index) => {
-        this.drawerContent.innerHTML += `<cart-item data-index="${index}">
-        <div class="flex gap-6 relative py-2">
-                  <div class="flex w-24 h-27 shrink-0">
+        this.drawerItems.innerHTML += `<cart-item data-index="${index}">
+        <div class="flex gap-3 relative py-2">
+                  <div class="flex w-20 h-20 shrink-0">
                     <img class="w-full h-full object-contain" src="${item.image}" alt="">
                   </div>
-                  <div>
-                    <h3 class="font-semibold text-base">${item.title}</h3>
-                    <div class="text-brand-gray text-sm">Size: M</div>
-                    <div class="text-brand-gray text-sm">Qty: ${item.quantity}</div>
+                  <div class="flex flex-col justify-between">
+                    <h3 class="font-normal text-sm">${item.title}</h3>
+                   <div>
+                      <div class="font-semibold">$${item.price}</div>
+                      <div class="text-sm text-brand-gray"><s>$${item.price}</s></div>
+                    </div>
                   </div>
-                  <button data-remove class="absolute bottom-0 right-0 size-6 rounded-full flex justify-center items-center cursor-pointer">
+                  <button data-remove class="absolute top-2 right-0 size-6 rounded-full flex justify-center items-center cursor-pointer">
                     <svg class="size-4" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
                       <path d="M216,50H174V40a22,22,0,0,0-22-22H104A22,22,0,0,0,82,40V50H40a6,6,0,0,0,0,12H50V208a14,14,0,0,0,14,14H192a14,14,0,0,0,14-14V62h10a6,6,0,0,0,0-12ZM94,40a10,10,0,0,1,10-10h48a10,10,0,0,1,10,10V50H94ZM194,208a2,2,0,0,1-2,2H64a2,2,0,0,1-2-2V62H194ZM110,104v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Zm48,0v64a6,6,0,0,1-12,0V104a6,6,0,0,1,12,0Z"></path>
                     </svg>
                   </button>
                   <div class="flex items-center ml-auto">
-                    <div class="text-right">
-                      <div class="font-semibold">$169.99</div>
-                      <div class="text-sm text-brand-gray"><s>$199.99</s></div>
-                    </div>
+                    
                   </div>
                 </div>
                 </cart-item>`;
 
       })
-      console.log('this.drawerContent updated', this.drawerContent.scrollHeight);
-
     } else {
-      this.drawerContent.innerHTML = `<div class="py-6 text-center text-brand-gray">Cart is empty</div>`;
+      this.drawerItems.innerHTML = `<div class="py-6 text-center text-brand-gray">Cart is empty</div>`;
     }
-    const contentHeight = this.drawerContent.scrollHeight;
-    console.log('contentHeight', contentHeight);
+    const contentHeight = this.drawerContainerInner.scrollHeight;
 
-    this.drawer.style.height = (contentHeight) + 'px';
-    document.documentElement.classList.add('cart-drawer-open');
+    this.drawerContainer.style.height = (contentHeight) + 'px';
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   }
   closeDrawer() {
-    this.drawer.style.height = '0px';
+    this.drawerContainer.style.height = '0px';
     document.documentElement.classList.remove('cart-drawer-open');
   }
 }
@@ -194,7 +206,7 @@ class CartItem extends HTMLElement {
   }
 
   connectedCallback() {
-    this.removeButton.addEventListener('click', this.removeItem)
+    this.removeButton.addEventListener('click', this.removeItem, true)
   }
 
 
@@ -204,8 +216,6 @@ class CartItem extends HTMLElement {
 
   removeItem() {
     const items = cart.remove(this.dataset.index);
-    console.log('remove', this.dataset.index);
-
     this.removeButton.closest('cart-item').remove();
     document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
       bubbles: true
@@ -321,7 +331,6 @@ class ProductCard extends HTMLElement {
     this.dataImg = this.querySelector('[data-img]');
     this.dataTitle = this.querySelector('[data-title]');
     this.dataPrice = this.querySelector('[data-price]');
-    console.log('data-add-to-cart', this.addToCartButton);
 
   }
 
@@ -334,14 +343,6 @@ class ProductCard extends HTMLElement {
   }
 
   addToCart() {
-    console.log('this.dataUrl', this.dataUrl.href);
-
-    console.log('this.dataImg', this.dataImg.src);
-
-    console.log('this.dataTitle', this.dataTitle.textContent);
-
-    console.log('this.dataPrice', this.dataPrice.textContent);
-
     const items = cart.add({
       title: this.dataTitle.textContent,
       quantity: 1,
