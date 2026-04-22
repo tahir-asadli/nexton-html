@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const sale_price = product.sale_price;
           const url = `/${slug}.html`;
           const featuredImage = product.gallery[0]
-          const featuredImageUrl = `/assets/watches/${slug}/${featuredImage}`;
+          const featuredImageUrl = `${featuredImage}`;
           let productHTML = PRODUCT_CART_TEMPLATE.replaceAll('{{product_title}}', product.title).replaceAll('{{featuredImageUrl}}', featuredImageUrl).replaceAll("{{url}}", url);
           if (sale_price > 0) {
             productHTML = productHTML.replaceAll('{{price}}', `$${sale_price}`)
