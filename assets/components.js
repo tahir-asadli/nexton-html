@@ -408,6 +408,8 @@ class ProductForm extends HTMLElement {
     this.totals = this.querySelectorAll('span[data-total]')
     this.productTitle = this.querySelector('h1[data-title]')
     this.productImage = this.querySelector('img[data-img]')
+    this.thumbnailSlider = this.querySelector('.product-thumbnail-slider')
+    this.mainSlider = this.querySelector('.product-main-slider')
     this.addToCart = this.addToCart.bind(this);
     this.updateInfo = this.updateInfo.bind(this);
   }
@@ -415,6 +417,37 @@ class ProductForm extends HTMLElement {
   connectedCallback() {
     this.addToCartButton.addEventListener("click", this.addToCart);
     this.quantityInput.addEventListener("change", this.updateInfo);
+
+
+    var main = new Splide(this.mainSlider, {
+      type: 'fade',
+      rewind: true,
+      pagination: false,
+      arrows: false,
+    });
+
+    // 2. Initialize the thumbnail slider
+    var thumbnails = new Splide(this.thumbnailSlider, {
+      // fixedWidth: 100,
+      fixedHeight: 148,
+      gap: 10,
+      rewind: true,
+      pagination: false,
+      isNavigation: true, // Critical for clickable thumbs
+      direction: 'ttb', // Vertical direction
+      height: '640px', // Must specify a height for vertical mode
+      breakpoints: {
+        600: {
+          fixedWidth: 60,
+          fixedHeight: 44,
+        },
+      },
+    });
+
+    // 3. Sync them
+    main.sync(thumbnails);
+    main.mount();
+    thumbnails.mount();
   }
 
   disconnectedCallback() {
