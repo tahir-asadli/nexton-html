@@ -227,6 +227,45 @@
     @apply bg-brand-black! w-10!;
     transform: scale(1) !important;
   }
+  image-viewer-window > div > div,
+  image-viewer-window nav > div {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  image-viewer-window > div > div::-webkit-scrollbar,
+  image-viewer-window nav > div::-webkit-scrollbar {
+    display: none;
+  }
+
+  image-viewer-window {
+    /* w-[90vw] h-[90vh] */
+    @apply fixed top-0 left-0 right-0 bottom-0 m-auto w-full h-full z-3 bg-black/50 flex justify-center items-center;
+  }
+  image-viewer-window button.close {
+    @apply absolute top-6 left-6 w-12 h-12 rounded-2xl bg-white/90 text-2xl cursor-pointer z-2;
+  }
+  image-viewer-window > div {
+    @apply bg-white p-5 drop-shadow-2xl rounded-2xl;
+  }
+  image-viewer-window > div > div {
+    /* hide-scrollbar */
+    @apply grid grid-cols-[auto_150px] gap-5 overflow-scroll w-[70vw] h-[70vh] relative;
+  }
+  image-viewer-window main {
+    @apply flex flex-col gap-2 rounded-2xl;
+  }
+  image-viewer-window main img {
+    @apply w-full;
+  }
+  image-viewer-window nav > div {
+    @apply sticky top-0 h-[80vh] flex flex-col gap-2 overflow-scroll;
+  }
+  image-viewer-window nav > div img {
+    @apply w-full h-35 object-cover rounded-2xl cursor-pointer border border-black transition-all;
+  }
+  image-viewer-window nav > div img.in-view {
+    @apply border-3 border-brand-blue;
+  }
 }
 @layer utilities {
   .container {

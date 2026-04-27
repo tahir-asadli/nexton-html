@@ -2,7 +2,9 @@ const EVENTS = {
   CART_UPDATED: 'cart-updated',
   PRODUCT_ADDED: 'product-added',
   OPEN_CART_DRAWER: 'open-cart-drawer',
-  CLOSE_CART_DRAWER: 'close-cart-drawer'
+  CLOSE_CART_DRAWER: 'close-cart-drawer',
+  OPEN_IMAGE_VIEWER: 'open-image-viewer',
+  CLOSE_IMAGE_VIEWER: 'close-image-viewer'
 }
 
 const VARIABLES = {
@@ -410,14 +412,19 @@ class ProductForm extends HTMLElement {
     this.productImage = this.querySelector('img[data-img]')
     this.thumbnailSlider = this.querySelector('.product-thumbnail-slider')
     this.mainSlider = this.querySelector('.product-main-slider')
+    this.sliderImages = this.mainSlider.querySelectorAll('li')
     this.addToCart = this.addToCart.bind(this);
     this.updateInfo = this.updateInfo.bind(this);
+    this.openImageViewer = this.openImageViewer.bind(this)
+
   }
 
   connectedCallback() {
     this.addToCartButton.addEventListener("click", this.addToCart);
     this.quantityInput.addEventListener("change", this.updateInfo);
-
+    this.sliderImages?.forEach((sliderImage, index) => {
+      sliderImage.addEventListener('click', this.openImageViewer)
+    })
 
     var main = new Splide(this.mainSlider, {
       type: 'fade',
@@ -453,6 +460,9 @@ class ProductForm extends HTMLElement {
   disconnectedCallback() {
     this.addToCartButton.removeEventListener("click", this.addToCart);
     this.quantityInput.removeEventListener("change", this.updateInfo);
+    this.sliderImages?.forEach((sliderImage) => {
+      sliderImage.removeEventListener('click', this.openImageViewer)
+    })
   }
 
   updateInfo() {
@@ -479,5 +489,134 @@ class ProductForm extends HTMLElement {
     }));
   }
 
+  openImageViewer(e) {
+    const target = e.target.closest('li');
+    const siblings = Array.from(target.closest('ul').children);
+    const index = siblings.indexOf(target)
+    document.dispatchEvent(new CustomEvent(EVENTS.OPEN_IMAGE_VIEWER, {
+      detail: {
+        index: index
+      },
+      bubbles: true
+    }));
+  }
+
 }
 customElements.define('product-form', ProductForm)
+
+
+// class ImageViewer extends HTMLElement {
+//   constructor() {
+//     super();
+//     this.images = this.querySelectorAll('img');
+
+//   }
+//   connectedCallback() {
+//     this.images.forEach((image, index) => {
+//       image.addEventListener('click', this.openBox)
+//     });
+//   }
+
+//   disconnectedCallback() {
+//   }
+
+//   openBox(event) {
+//   }
+// }
+
+// customElements.define('image-viewer', ImageViewer)
+
+
+class ImageViewerWindow extends HTMLElement {
+  constructor() {
+    super();
+    this.content = this.querySelector('main')
+    this.innerContent = this.querySelector('&>div>div')
+
+    this.nav = this.querySelector('nav')
+    this.closeButton = this.querySelector('button.close')
+
+    this.images = this.nav.querySelectorAll('img') ?? [];
+    this.navigate = this.navigate.bind(this);
+    this.close = this.close.bind(this)
+    this.open = this.open.bind(this)
+
+  }
+  connectedCallback() {
+    console.log('connected');
+
+    this.images.forEach((image, index) => {
+      image.addEventListener('click', this.navigate)
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const children = Array.from(entry.target.parentNode.children);
+          const index = children.indexOf(entry.target)
+          const navChildren = Array.from(this.images);
+          if (navChildren.length && navChildren[index]) {
+            navChildren.forEach(element => {
+              element.classList.remove('in-view')
+            });
+            navChildren[index].classList.add('in-view')
+          }
+          entry.target.classList.add('in-view');
+        }
+      });
+    });
+    this.content.querySelectorAll('img').forEach(el => observer.observe(el));
+
+    this.closeButton?.addEventListener('click', this.close)
+
+    document.addEventListener('keydown', this.close);
+    document.addEventListener(EVENTS.OPEN_IMAGE_VIEWER, (e) => {
+      this.open(e.detail.index)
+    })
+    this.addEventListener('click', this.close)
+  }
+
+  disconnectedCallback() {
+    this.images.forEach((image, index) => {
+      image.removeEventListener('click', this.navigate)
+    });
+    this.closeButton.removeEventListener('click', this.close)
+    document.removeEventListener('keydown', this.onEscape);
+  }
+
+  navigate(event) {
+    const target = event.target;
+    const navChildren = Array.from(target.parentNode.children);
+    const index = navChildren.indexOf(target)
+    const contentChildren = Array.from(this.content.children);
+    if (contentChildren.length && contentChildren[index]) {
+      contentChildren[index].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      });
+    }
+  }
+  open(index) {
+    console.log('index', index, this.images);
+    const images = Array.from(this.images);
+    console.log('images.length', images.length, images[index]);
+    document.documentElement.classList.add('image-viewer-open')
+    if (images.length > 0 && images[index]) {
+      console.log('ok');
+
+      images[index].click()
+      //   console.log(index);
+
+    }
+
+  }
+  close(e) {
+    console.log('close', e.target, e.target.tagName);
+    if (e.target.tagName == 'IMAGE-VIEWER-WINDOW' || e.key === 'Escape') {
+      document.documentElement.classList.remove('image-viewer-open')
+    }
+
+  }
+}
+customElements.define('image-viewer-window', ImageViewerWindow)
