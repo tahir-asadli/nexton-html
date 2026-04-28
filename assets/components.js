@@ -135,15 +135,15 @@ class CartDrawer extends HTMLElement {
     if (event.key === 'Escape') {
       this.closeDrawer();
     } else {
-      if (event.target.closest('cart-button')) {
-        console.log('parent cart-button');
-      } else if (event.target.closest('cart-drawer')) {
-        console.log('parent cart-drawer');
-      } else if (event.target.closest('button[data-add-to-cart]')) {
-        console.log('parent add to cart button');
-      } else if (event.target.closest('button[data-remove]')) {
-        console.log('parent remove button');
-      }
+      // if (event.target.closest('cart-button')) {
+      //   console.log('parent cart-button');
+      // } else if (event.target.closest('cart-drawer')) {
+      //   console.log('parent cart-drawer');
+      // } else if (event.target.closest('button[data-add-to-cart]')) {
+      //   console.log('parent add to cart button');
+      // } else if (event.target.closest('button[data-remove]')) {
+      //   console.log('parent remove button');
+      // }
       if (!event.target.closest('cart-button') && !event.target.closest('cart-drawer') && !event.target.closest('button[data-add-to-cart]') && !event.target.closest('button[data-remove]')) {
         this.closeDrawer();
       }
@@ -466,7 +466,6 @@ class ProductForm extends HTMLElement {
   }
 
   updateInfo() {
-    console.log();
     this.quantities.forEach((el) => {
       el.innerHTML = this.quantityInput.value
     })
@@ -504,29 +503,6 @@ class ProductForm extends HTMLElement {
 }
 customElements.define('product-form', ProductForm)
 
-
-// class ImageViewer extends HTMLElement {
-//   constructor() {
-//     super();
-//     this.images = this.querySelectorAll('img');
-
-//   }
-//   connectedCallback() {
-//     this.images.forEach((image, index) => {
-//       image.addEventListener('click', this.openBox)
-//     });
-//   }
-
-//   disconnectedCallback() {
-//   }
-
-//   openBox(event) {
-//   }
-// }
-
-// customElements.define('image-viewer', ImageViewer)
-
-
 class ImageViewerWindow extends HTMLElement {
   constructor() {
     super();
@@ -543,8 +519,6 @@ class ImageViewerWindow extends HTMLElement {
 
   }
   connectedCallback() {
-    console.log('connected');
-
     this.images.forEach((image, index) => {
       image.addEventListener('click', this.navigate)
     });
@@ -598,21 +572,13 @@ class ImageViewerWindow extends HTMLElement {
     }
   }
   open(index) {
-    console.log('index', index, this.images);
-    const images = Array.from(this.images);
-    console.log('images.length', images.length, images[index]);
+    const images = Array.from(this.content.children);
     document.documentElement.classList.add('image-viewer-open')
     if (images.length > 0 && images[index]) {
-      console.log('ok');
-
-      images[index].click()
-      //   console.log(index);
-
+      images[index].scrollIntoView({})
     }
-
   }
   close(e) {
-    console.log('close', e.target, e.target.tagName);
     if (e.target.tagName == 'IMAGE-VIEWER-WINDOW' || e.key === 'Escape') {
       document.documentElement.classList.remove('image-viewer-open')
     }

@@ -171,7 +171,7 @@
   }
 
   .radio-button.image label {
-    @apply w-20 h-30 rounded-md bg-cover bg-center bg-no-repeat bg-transparent;
+    @apply w-10 h-20 rounded-md bg-cover bg-top bg-no-repeat bg-transparent;
     background-size: 100%;
   }
   .radio-button.image input:checked + label {
