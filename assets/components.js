@@ -597,12 +597,13 @@ class PriceSlider extends HTMLElement {
     // this.max = Number(this.priceMinEl.max) || 100;
     // this.minValue = this.priceMinEl.value ? Number(this.priceMinEl.value) : undefined;
     // this.maxValue = this.priceMaxEl.value ? Number(this.priceMaxEl.value) : undefined;
-    this.min = this.dataset.min ? Number(this.dataset.min) : 1
-    this.max = this.dataset.max ? Number(this.dataset.max) : 100
-    this.minValue = this.dataset.minValue ? Number(this.dataset.minValue) : undefined;
-    this.maxValue = this.dataset.maxValue ? Number(this.dataset.maxValue) : undefined;
+    this.min = this.sliderEl.dataset.min ? Number(this.sliderEl.dataset.min) : 1
+    this.max = this.sliderEl.dataset.max ? Number(this.sliderEl.dataset.max) : 100
+    this.minValue = this.sliderEl.dataset.minValue ? Number(this.sliderEl.dataset.minValue) : undefined;
+    this.maxValue = this.sliderEl.dataset.maxValue ? Number(this.sliderEl.dataset.maxValue) : undefined;
     this.slider = null;
-    console.log('this.sliderEl', this.sliderEl);
+    console.log('this.minValue', this.minValue, this);
+    console.log('this.maxValue', this.maxValue, this);
 
   }
   connectedCallback() {
@@ -632,9 +633,14 @@ class PriceSlider extends HTMLElement {
     }
     if (this.priceMaxEl) {
       this.priceMaxEl.addEventListener('change', () => {
-        console.log('update()', this.slider.update(this.priceMinEl.value,
-          this.priceMaxEl.value));
-
+        this.slider.update(this.priceMinEl.value,
+          this.priceMaxEl.value);
+      })
+    }
+    if (this.priceMinEl) {
+      this.priceMinEl.addEventListener('change', () => {
+        this.slider.update(this.priceMinEl.value,
+          this.priceMaxEl.value)
       })
     }
   }

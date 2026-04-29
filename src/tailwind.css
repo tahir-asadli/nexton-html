@@ -147,7 +147,15 @@
     @apply size-5;
   }
   .text-input {
-    @apply border border-brand-silver rounded-xl py-2.25 px-5 outline-offset-1;
+    @apply border border-brand-silver rounded-xl py-2.25 px-5 outline-offset-1 text-brand-gray;
+  }
+  .text-input[type='number'] {
+    -moz-appearance: textfield;
+  }
+  .text-input[type='number']::-webkit-outer-spin-button,
+  .text-input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
   .search-input {
     @apply bg-brand-cloud rounded-full py-3.5 pr-6 pl-13.5;

@@ -235,10 +235,9 @@
     return {
       sliderElement,
       getValues: () => ({ min: currentMinValue, max: currentMaxValue }),
-      update: (min, max) => {
-        console.log('minmax', min, max);
-        currentMaxValue = max;
-        currentMinValue = min;
+      update: (_min, _max) => {
+        currentMaxValue = _max >= min && _max <= max ? _max : max;
+        currentMinValue = _min >= min && _min <= max ? _min : min;
         updateUI();
       }
     };
