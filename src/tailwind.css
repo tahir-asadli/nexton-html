@@ -105,6 +105,10 @@
   label {
     @apply block font-semibold mb-2;
   }
+
+  input[type='checkbox'] {
+    @apply w-5 h-5 accent-brand-blue;
+  }
 }
 @layer components {
   .button {
@@ -323,4 +327,22 @@
   100% {
     transform: translateY(0);
   }
+}
+
+price-slider .range-slider-container .range-slider-handle#handle-min,
+price-slider .range-slider-container .range-slider-handle#handle-max {
+  width: 15px;
+  height: 15px;
+  border-color: #0ea5e9;
+  background: rgba(255, 255, 255, 0.8);
+}
+price-slider .range-slider-container .range-slider-fill {
+  background: #0ea5e9;
+  height: 5px;
+}
+price-slider .range-slider-container .range-slider-track {
+  background: #e5e7eb;
+}
+price-slider .range-slider-labels {
+  display: none;
 }

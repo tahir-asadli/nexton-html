@@ -586,3 +586,61 @@ class ImageViewerWindow extends HTMLElement {
   }
 }
 customElements.define('image-viewer-window', ImageViewerWindow)
+
+class PriceSlider extends HTMLElement {
+  constructor() {
+    super();
+    this.sliderEl = this.querySelector('[data-slider]');
+    this.priceMinEl = this.querySelector('[price-min]');
+    this.priceMaxEl = this.querySelector('[price-max]');
+    // this.min = Number(this.priceMinEl.min) || 1;
+    // this.max = Number(this.priceMinEl.max) || 100;
+    // this.minValue = this.priceMinEl.value ? Number(this.priceMinEl.value) : undefined;
+    // this.maxValue = this.priceMaxEl.value ? Number(this.priceMaxEl.value) : undefined;
+    this.min = this.dataset.min ? Number(this.dataset.min) : 1
+    this.max = this.dataset.max ? Number(this.dataset.max) : 100
+    this.minValue = this.dataset.minValue ? Number(this.dataset.minValue) : undefined;
+    this.maxValue = this.dataset.maxValue ? Number(this.dataset.maxValue) : undefined;
+    this.slider = null;
+    console.log('this.sliderEl', this.sliderEl);
+
+  }
+  connectedCallback() {
+    if (this.sliderEl) {
+      this.slider = createRangeSlider(this.sliderEl, {
+        min: this.min,
+        max: this.max,
+        step: 1,
+        minValue: this.minValue,
+        maxValue: this.maxValue,
+        labelPrefix: '',
+        labelSuffix: '',
+        label: false,
+      });
+      this.slider.sliderElement.addEventListener('rangeChange', (e) => {
+        if (this.priceMinEl) {
+          this.priceMinEl.value = e.detail.min;
+          this.priceMaxEl.value = e.detail.max;
+        }
+      });
+      this.slider.sliderElement.addEventListener('rangeChanging', (e) => {
+        if (this.priceMinEl) {
+          this.priceMinEl.value = e.detail.min;
+          this.priceMaxEl.value = e.detail.max;
+        }
+      });
+    }
+    if (this.priceMaxEl) {
+      this.priceMaxEl.addEventListener('change', () => {
+        console.log('update()', this.slider.update(this.priceMinEl.value,
+          this.priceMaxEl.value));
+
+      })
+    }
+  }
+
+  disconnectedCallback() {
+  }
+}
+
+customElements.define('price-slider', PriceSlider);

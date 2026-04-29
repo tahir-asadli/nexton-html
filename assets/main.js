@@ -95,6 +95,7 @@ console.log('cart.count', cart.count, cart.items());
 
 document.addEventListener("DOMContentLoaded", function () {
   const BEST_SELLERS_CONTAINER = document.querySelector('#best-sellers');
+  const COLLECTION_PRODUCTS_CONTAINER = document.querySelector('#collection-products');
   const CART_CONTAINER = document.querySelector('#cart-container');
   if (BEST_SELLERS_CONTAINER) {
     fetch('products.json')
@@ -133,5 +134,31 @@ document.addEventListener("DOMContentLoaded", function () {
       CART_CONTAINER.innerHTML = '<div class="py-6 text-center text-brand-gray">Cart is empty</div>';
     }
   }
+  if (COLLECTION_PRODUCTS_CONTAINER) {
+    fetch('products.json')
+      .then(response => response.json()) // Parse the JSON
+      .then(products => {
+        for (let index in products) {
+          const product = products[index];
+          const slug = product.slug;
+          const price = product.price;
+          const sale_price = product.sale_price;
+          const url = `/${slug}.html`;
+          const featuredImage = product.gallery[0]
+          const featuredImageUrl = `${featuredImage}`;
+          let productHTML = PRODUCT_CART_TEMPLATE.replaceAll('{{product_title}}', product.title).replaceAll('{{featuredImageUrl}}', featuredImageUrl).replaceAll("{{url}}", url);
+          if (sale_price > 0) {
+            productHTML = productHTML.replaceAll('{{price}}', `$${sale_price}`)
+            productHTML = productHTML.replaceAll('{{sale_price}}', `$${price}`)
+          } else {
+            productHTML = productHTML.replaceAll('{{price}}', `$${price}`)
+            productHTML = productHTML.replaceAll('{{sale_price}}', '')
+          }
+          COLLECTION_PRODUCTS_CONTAINER.innerHTML += "\n" + productHTML
+        }
+      })
+      .catch(error => console.error('Error loading JSON:', error));
+  }
+
 });
 

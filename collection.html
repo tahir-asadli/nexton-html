@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <link href=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <link rel="stylesheet" href="assets/range-slider.css">
+  <script src="assets/range-slider.js"></script>
+  <link href="./assets/tailwind.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="border-b border-brand-silver">
+    <div class="container relative bg-white z-1">
+      <div class="flex gap-2 justify-center items-center h-25">
+        <div>
+          <a href="/" class="inline-flex rounded-xl">
+            <img src="assets/logo.svg" alt="">
+          </a>
+        </div>
+        <search-bar class="flex justify-center grow">
+          <form class="flex justify-center relative w-100">
+            <input type="text" class="search-input" name="q" value="" placeholder="Search in products...">
+            <svg class="size-5 text-brand-gray absolute left-8 top-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.58335 17.5C13.9556 17.5 17.5 13.9556 17.5 9.58333C17.5 5.21108 13.9556 1.66667 9.58335 1.66667C5.2111 1.66667 1.66669 5.21108 1.66669 9.58333C1.66669 13.9556 5.2111 17.5 9.58335 17.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M18.3334 18.3333L16.6667 16.6667" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <button data-clear class="absolute right-6 top-4 border border-brand-gray text-brand-black size-5 rounded-full flex justify-center items-center cursor-pointer" type="button">&times;</button>
+          </form>
+        </search-bar>
+        <div class="flex gap-1 items-center ml-auto">
+          <a href="/" class="flex items-center justify-center p-2 rounded-xl">
+            <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <cart-button>
+            <button data-button class="flex items-center justify-center p-2 rounded-xl relative cursor-pointer">
+              <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 8H21" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span data-cart-count class="absolute -top-1 -right-1 bg-brand-blue size-5 flex justify-center items-center text-white rounded-full font-semibold empty:hidden text-xs">1</span>
+            </button>
+          </cart-button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Collection -->
+  <section class="mt-10">
+    <div class="container">
+      <div class="grid grid-cols-[310px_auto] gap-5">
+        <div>
+          <form>
+            <fieldset>
+              <div class="border-b border-brand-silver mb-6 pb-7">
+                <h3 class="text-lg mb-6">Availability</h3>
+                <div class="flex flex-col gap-4 mb-6">
+                  <div class="flex gap-2 items-center">
+                    <input type="checkbox" id="in-stock">
+                    <label for="in-stock" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">In stock</label>
+                  </div>
+                  <div class="flex gap-2 items-center">
+                    <input type="checkbox" id="out-of-stock">
+                    <label for="out-of-stock" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">Out of stock</label>
+                  </div>
+                </div>
+              </div>
+              <div class="border-b border-brand-silver mb-6 pb-7">
+                <h3 class="text-lg mb-6">Size</h3>
+                <div class="flex flex-col gap-4 mb-6">
+                  <div class="flex gap-2 items-center">
+                    <input type="checkbox" id="40mm">
+                    <label for="40mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">40mm</label>
+                  </div>
+                  <div class="flex gap-2 items-center">
+                    <input type="checkbox" id="34mm">
+                    <label for="34mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">34mm</label>
+                  </div>
+                  <div class="flex gap-2 items-center">
+                    <input type="checkbox" id="43mm">
+                    <label for="43mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">43mm</label>
+                  </div>
+                  <div class="flex gap-2 items-center">
+                    <input type="checkbox" id="44mm">
+                    <label for="44mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">44mm</label>
+                  </div>
+                </div>
+              </div>
+              <div class="border-b border-brand-silver mb-6 pb-7">
+                <h3 class="text-lg mb-6">Price</h3>
+                <price-slider>
+                  <div data-slider data-min="1" data-max="10000" data-min-value="25" data-max-value="75">
+                  </div>
+                  <input type="number" price-min min="2" max="99" value="5" name="min-value">
+                  <input type="number" price-max min="2" max="99" value="99" name="max-value">
+                </price-slider>
+                <!-- <div class="w-40">
+                  <div data-range-slider data-min="1" data-max="10000" data-min-value="25" data-max-value="75" data-on-change="handlePriceChange">
+                  </div>
+                </div> -->
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div>
+          <div id="collection-products" class="grid grid-cols-3 gap-5">
+          </div>
+          <div>
+            <div id="sliderContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="grid grid-cols-2 bg-brand-silver-400 py-10 rounded-4xl">
+        <div class="relative flex items-center py-13 pl-30">
+          <div class="flex flex-col gap-6">
+            <div>
+              <h4 class="text-brand-gray font-medium text-xl mb-4">100% Original Products</h4>
+              <h2 class="">The All New Fashion Collection Items</h2>
+            </div>
+            <h4 class="text-brand-gray font-normal text-xl">Starting from: $59.99</h4>
+            <div class="button-container">
+              <a href="/" class="button  shadow">
+                <span>Shop now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex relative justify-end">
+          <img class="absolute right-0 left-0 m-auto h-full" src="assets/images/banner.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Cart Drawer -->
+  <cart-drawer>
+    <div data-drawer class="absolute z-3 top-25 w-100">
+      <!-- transition-all  -->
+      <div data-drawer-container class="max-h-120 overflow-scroll border border-brand-silver bg-white/90 backdrop-blur-sm hide-scrollbar h-0 in-[.cart-drawer-open]:h-auto">
+        <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
+        <div data-drawer-container-inner class="flex flex-col">
+          <!-- max-h-114   -->
+          <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-fullborder-b border-brand-silver">
+            <div class="flex flex-col gap-3" data-drawer-items></div>
+            <div data-drawer-footer class="flex flex-col gap-2 items-center py-3">
+              <a href="/cart.html" class="button gray medium w-60">View cart</a>
+              <a href="/" class="button ghost medium w-60 bg-transparent underline">Continue shopping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- in-[.cart-drawer-open]:block  -->
+    <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
+  </cart-drawer>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4 py-15">
+        <div>
+          <div class="mb-5">
+            <a href="/" class="inline-flex rounded-xl">
+              <img src="assets/logo.svg" alt="">
+            </a>
+          </div>
+          <div>
+            <ul class="flex flex-col gap-4">
+              <li>
+                <a href="/" class="group flex gap-2 items-center">
+                  <svg class="transition size-4 group-hover:text-[#4676ED]" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.86888 12.1749V6.62136H0V4.45703H1.86888V2.8609C1.86888 1.00861 3.0002 0 4.65258 0C5.44408 0 6.12434 0.0589293 6.32258 0.0852686V2.02102L5.17657 2.02154C4.27792 2.02154 4.10392 2.44857 4.10392 3.0752V4.45703H6.24712L5.96807 6.62136H4.10391V12.1749H1.86888Z" fill="currentColor" />
+                  </svg>
+                  <span class="transition text-brand-gray group-hover:text-brand-black">Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a href="/" class="group flex gap-2 items-center">
+                  <svg class="transition size-4 group-hover:text-[#DA0000]" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
+                  </svg>
+                  <span class="transition text-brand-gray group-hover:text-brand-black">Youtube</span>
+                </a>
+              </li>
+              <li>
+                <a href="/" class="group flex gap-2 items-center">
+                  <svg class="transition size-4 group-hover:text-[#C500E9]" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.77419 1.22064C8.5829 1.22064 8.7971 1.22742 9.51161 1.26C9.94122 1.26526 10.3667 1.34414 10.7697 1.49323C11.0619 1.60592 11.3273 1.77855 11.5487 2C11.7702 2.22145 11.9428 2.48683 12.0555 2.77903C12.2046 3.18197 12.2835 3.60749 12.2887 4.0371C12.321 4.75161 12.3281 4.96581 12.3281 6.77452C12.3281 8.58322 12.3213 8.79742 12.2887 9.51193C12.2835 9.94154 12.2046 10.3671 12.0555 10.77C11.9428 11.0622 11.7702 11.3276 11.5487 11.549C11.3273 11.7705 11.0619 11.9431 10.7697 12.0558C10.3667 12.2049 9.94122 12.2838 9.51161 12.289C8.79742 12.3213 8.58323 12.3284 6.77419 12.3284C4.96516 12.3284 4.75097 12.3216 4.03677 12.289C3.60717 12.2838 3.18165 12.2049 2.77871 12.0558C2.4865 11.9431 2.22113 11.7705 1.99968 11.549C1.77822 11.3276 1.60559 11.0622 1.4929 10.77C1.34382 10.3671 1.26493 9.94154 1.25968 9.51193C1.22742 8.79742 1.22032 8.58322 1.22032 6.77452C1.22032 4.96581 1.2271 4.75161 1.25968 4.0371C1.26493 3.60749 1.34382 3.18197 1.4929 2.77903C1.60559 2.48683 1.77822 2.22145 1.99968 2C2.22113 1.77855 2.4865 1.60592 2.77871 1.49323C3.18165 1.34414 3.60717 1.26526 4.03677 1.26C4.75129 1.22774 4.96548 1.22064 6.77419 1.22064V1.22064ZM6.77419 0C4.93548 0 4.70387 0.00774191 3.98129 0.0406451C3.41905 0.0518283 2.86277 0.158284 2.33613 0.355484C1.88435 0.525699 1.47516 0.79244 1.1371 1.1371C0.792129 1.47528 0.525159 1.88471 0.354839 2.33677C0.157639 2.86342 0.0511832 3.41969 0.04 3.98193C0.00774196 4.70387 0 4.93548 0 6.77419C0 8.6129 0.00774191 8.84452 0.0406451 9.5671C0.0518283 10.1293 0.158284 10.6856 0.355484 11.2123C0.525616 11.6643 0.792362 12.0737 1.1371 12.4119C1.47535 12.7567 1.88477 13.0234 2.33677 13.1935C2.86342 13.3907 3.41969 13.4972 3.98194 13.5084C4.70452 13.5406 4.93516 13.549 6.77484 13.549C8.61452 13.549 8.84516 13.5413 9.56774 13.5084C10.13 13.4972 10.6863 13.3907 11.2129 13.1935C11.6628 13.0192 12.0713 12.7528 12.4123 12.4116C12.7534 12.0703 13.0195 11.6616 13.1935 11.2116C13.3907 10.685 13.4972 10.1287 13.5084 9.56645C13.5406 8.84451 13.5484 8.6129 13.5484 6.77419C13.5484 4.93548 13.5406 4.70387 13.5077 3.98129C13.4966 3.41905 13.3901 2.86277 13.1929 2.33613C13.0228 1.88412 12.756 1.4747 12.4113 1.13645C12.073 0.791716 11.6636 0.52497 11.2116 0.354839C10.685 0.157639 10.1287 0.0511832 9.56645 0.04C8.84452 0.00774196 8.6129 0 6.77419 0Z" fill="currentColor" />
+                    <path d="M6.77559 3.29688C6.08756 3.29688 5.41499 3.5009 4.84292 3.88314C4.27085 4.26539 3.82497 4.80869 3.56168 5.44434C3.29838 6.07999 3.22949 6.77944 3.36372 7.45425C3.49795 8.12905 3.82926 8.7489 4.31577 9.2354C4.80227 9.72191 5.42212 10.0532 6.09692 10.1875C6.77173 10.3217 7.47118 10.2528 8.10683 9.98949C8.74248 9.7262 9.28578 9.28032 9.66803 8.70825C10.0503 8.13618 10.2543 7.46361 10.2543 6.77558C10.2543 5.85297 9.88779 4.96815 9.2354 4.31577C8.58302 3.66338 7.6982 3.29688 6.77559 3.29688ZM6.77559 9.03365C6.32898 9.03365 5.89241 8.90122 5.52107 8.6531C5.14974 8.40498 4.86031 8.05232 4.68941 7.63971C4.5185 7.2271 4.47378 6.77308 4.56091 6.33506C4.64804 5.89704 4.8631 5.49469 5.17889 5.17889C5.49469 4.8631 5.89704 4.64804 6.33506 4.56091C6.77308 4.47378 7.2271 4.5185 7.63971 4.6894C8.05232 4.86031 8.40498 5.14973 8.6531 5.52107C8.90122 5.89241 9.03365 6.32898 9.03365 6.77558C9.03365 7.37446 8.79575 7.94881 8.37228 8.37228C7.94881 8.79575 7.37446 9.03365 6.77559 9.03365V9.03365Z" fill="currentColor" />
+                    <path d="M10.391 3.97151C10.84 3.97151 11.2039 3.60756 11.2039 3.15861C11.2039 2.70965 10.84 2.3457 10.391 2.3457C9.94207 2.3457 9.57812 2.70965 9.57812 3.15861C9.57812 3.60756 9.94207 3.97151 10.391 3.97151Z" fill="currentColor" />
+                  </svg>
+                  <span class="transition text-brand-gray group-hover:text-brand-black">Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a href="/" class="group flex gap-2 items-center">
+                  <svg class="transition size-4 group-hover:text-[#000000]" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+                  </svg>
+                  <span class="transition text-brand-gray group-hover:text-brand-black">X</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h5 class="mb-5">Getting started</h5>
+          <ul class="flex flex-col gap-4">
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Release Notes</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Upgrade Guide</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Browser Support</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Dark Mode</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="mb-5">Explore</h5>
+          <ul class="flex flex-col gap-4">
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Prototyping</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Design systems</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Pricing</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="mb-5">Community</h5>
+          <ul class="flex flex-col gap-4">
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Discussion Forums</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Code of Conduct</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">Contributing</a></li>
+            <li><a href="/" class="transition text-brand-gray hover:text-brand-black">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="container">
+        <div class="flex justify-between items-center py-8">
+          <div> Nexton eCommerce. © 2024 </div>
+          <div class="flex justify-end">
+            <img class="h-8" src="/assets/payment-icons@2x.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <image-viewer-window class="hidden in-[.image-viewer-open]:flex">
+    <div class="">
+      <div>
+        <main>
+          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02.webp" alt="Product">
+          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-1.webp" alt="Product">
+          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-2.webp" alt="Product">
+          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-3.webp" alt="Product">
+          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-4.webp" alt="Product">
+        </main>
+        <nav>
+          <div>
+            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02.webp" alt="Product">
+            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-1.webp" alt="Product">
+            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-2.webp" alt="Product">
+            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-3.webp" alt="Product">
+            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-4.webp" alt="Product">
+          </div>
+        </nav>
+      </div>
+      <!-- <button class="close">&times;</button> -->
+    </div>
+  </image-viewer-window>
+  <script>
+    // Optional: Handle price changes
+    window.handlePriceChange = (values, element) => {
+      console.log(values, element);
+    }
+  </script>
+  <script src="assets/main.js"></script>
+  <script src="assets/components.js"></script>
+</body>
+
+</html>
