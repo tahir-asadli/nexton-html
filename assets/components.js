@@ -135,15 +135,6 @@ class CartDrawer extends HTMLElement {
     if (event.key === 'Escape') {
       this.closeDrawer();
     } else {
-      // if (event.target.closest('cart-button')) {
-      //   console.log('parent cart-button');
-      // } else if (event.target.closest('cart-drawer')) {
-      //   console.log('parent cart-drawer');
-      // } else if (event.target.closest('button[data-add-to-cart]')) {
-      //   console.log('parent add to cart button');
-      // } else if (event.target.closest('button[data-remove]')) {
-      //   console.log('parent remove button');
-      // }
       if (!event.target.closest('cart-button') && !event.target.closest('cart-drawer') && !event.target.closest('button[data-add-to-cart]') && !event.target.closest('button[data-remove]')) {
         this.closeDrawer();
       }
@@ -315,7 +306,15 @@ class SplideExplore extends HTMLElement {
       autoplay: true,
       interval: 20000,
       speed: 2000,
-      gap: 20
+      gap: 20,
+      breakpoints: {
+        1024: {
+          perPage: 1,
+        },
+        1280: {
+          perPage: 2,
+        },
+      }
     }).mount();
 
   }
@@ -416,6 +415,8 @@ class ProductForm extends HTMLElement {
     this.addToCart = this.addToCart.bind(this);
     this.updateInfo = this.updateInfo.bind(this);
     this.openImageViewer = this.openImageViewer.bind(this)
+    this.images = this.querySelectorAll('img')
+    this.featuredImage = this.productImage ? this.productImage.src : this.images.length ? this.images[0].src : null;
 
   }
 
@@ -481,8 +482,9 @@ class ProductForm extends HTMLElement {
       title: this.productTitle.textContent,
       price: this.quantityPrice.value,
       quantity: this.quantityInput.value,
-      image: this.productImage.src
+      image: this.featuredImage
     })
+
     document.dispatchEvent(new CustomEvent(EVENTS.CART_UPDATED, {
       bubbles: true
     }));
@@ -602,8 +604,6 @@ class PriceSlider extends HTMLElement {
     this.minValue = this.sliderEl.dataset.minValue ? Number(this.sliderEl.dataset.minValue) : undefined;
     this.maxValue = this.sliderEl.dataset.maxValue ? Number(this.sliderEl.dataset.maxValue) : undefined;
     this.slider = null;
-    console.log('this.minValue', this.minValue, this);
-    console.log('this.maxValue', this.maxValue, this);
 
   }
   connectedCallback() {

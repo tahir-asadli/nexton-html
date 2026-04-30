@@ -52,7 +52,10 @@
   .h1 {
     line-height: 1.2;
     font-weight: 600;
-    font-size: var(--text-3xl);
+    font-size: var(--text-xl);
+    @variant md {
+      font-size: var(--text-3xl);
+    }
     @variant lg {
       font-size: var(--text-4xl);
     }
@@ -61,7 +64,10 @@
   .h2 {
     line-height: 1.2;
     font-weight: 600;
-    font-size: var(--text-2xl);
+    font-size: var(--text-lg);
+    @variant md {
+      font-size: var(--text-2xl);
+    }
     @variant lg {
       font-size: var(--text-3xl);
     }
@@ -70,7 +76,10 @@
   .h3 {
     line-height: 1.2;
     font-weight: 600;
-    font-size: var(--text-xl);
+    font-size: var(--text-md);
+    @variant md {
+      font-size: var(--text-xl);
+    }
     @variant lg {
       font-size: var(--text-2xl);
     }
@@ -79,8 +88,14 @@
   .h4 {
     line-height: 1.2;
     font-weight: 500;
-    font-size: var(--text-base);
+    font-size: var(--text-xs);
+    @variant md {
+      font-size: var(--text-sm);
+    }
     @variant lg {
+      font-size: var(--text-base);
+    }
+    @variant xl {
       font-size: var(--text-lg);
     }
   }
@@ -88,7 +103,10 @@
   .h5 {
     line-height: 1.2;
     font-weight: 600;
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
+    @variant md {
+      font-size: var(--text-sm);
+    }
     @variant lg {
       font-size: var(--text-base);
     }
@@ -112,7 +130,7 @@
 }
 @layer components {
   .button {
-    @apply inline-flex justify-center items-center gap-2.5 bg-brand-black text-white rounded-full py-3.5 px-9 cursor-pointer hover:bg-brand-black-400 active:bg-black transition border border-transparent outline-offset-1;
+    @apply inline-flex justify-center items-center gap-2.5 bg-brand-black text-white rounded-full py-1 md:py-2 lg:py-3.5 px-3 md:px-6 lg:px-9 cursor-pointer hover:bg-brand-black-400 active:bg-black transition border border-transparent outline-offset-1 text-xs sm:text-sm md:text-base;
   }
   .button.gray {
     @apply bg-brand-gray hover:bg-brand-gray-400 active:bg-brand-gray-600;
@@ -138,13 +156,13 @@
     @apply disabled:bg-brand-silver disabled:text-brand-gray disabled:cursor-not-allowed disabled:opacity-70;
   }
   .button.medium {
-    @apply py-2.5 px-7;
+    @apply py-0.5 md:py-1.5 lg:py-2.5 px-7;
   }
   .button.large {
-    @apply py-4.75;
+    @apply py-1.5 md:py-2.5 lg:py-4.75;
   }
   .button svg {
-    @apply size-5;
+    @apply size-3 md:size-4 lg:size-5;
   }
   .text-input {
     @apply border border-brand-silver rounded-xl py-2.25 px-5 outline-offset-1 text-brand-gray;
@@ -165,7 +183,7 @@
     background-size: 10px;
   }
   .search-input {
-    @apply bg-brand-cloud rounded-full py-3.5 pr-6 pl-13.5;
+    @apply bg-brand-cloud rounded-full py-1.5 sm:py-3.5 pr-6 pl-9.5 sm:pl-13.5;
   }
   /* Radio Button input */
   .radio-button input {
@@ -248,7 +266,7 @@
   .splide__pagination {
   }
   .splide__pagination button.splide__pagination__page {
-    @apply bg-brand-gray-400! rounded-sm! transition-all! duration-500!;
+    @apply bg-brand-gray-400! rounded-sm! transition-all! duration-500! h-1! md:h-1.5! lg:h-2!;
   }
   .splide__pagination button.splide__pagination__page.is-active {
     @apply bg-brand-black! w-10!;
@@ -333,7 +351,6 @@
   .pagination {
     @apply flex items-center gap-2 justify-end py-10;
   }
-  /* flex gap-2 py-4 justify-center [&>span]:px-3 [&>span]:py-1 [&>span]:border [&>span]:border-gray-300 [&>span]:rounded [&>span]:hover:bg-gray-100 */
   .pagination span.current {
     @apply inline-flex bg-brand-silver text-brand-gray px-3 py-1 rounded-xl;
   }

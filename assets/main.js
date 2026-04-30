@@ -24,25 +24,25 @@ class Cart {
 const cart = new Cart();
 const PRODUCT_CART_TEMPLATE = `<product-card>
         <div class="product-cart h-full max-w-77.5 relative border border-brand-silver-400 rounded-2xl overflow-hidden">
-          <a data-url href="{{url}}" class="flex w-full h-85 [&_img]:w-full [&_img]:h-full [&_img]:object-contain">
+          <a data-url href="{{url}}" class="flex w-full h-40 sm:h-60 md:h-70 lg:h-85 [&_img]:w-full [&_img]:h-full [&_img]:object-contain">
             <img data-img src="{{featuredImageUrl}}" alt="">
           </a>
           <div class=" p-4 ">
-            <div class="flex gap-2 justify-between">
+            <div class="flex flex-col md:flex-row gap-2 justify-between">
               <div class="flex flex-col gap-0.25">
                 <a href="{{url}}">
                   <h5 data-title>{{product_title}}</h5>
                 </a>
-                <div class="text-sm text-brand-gray">Accessories</div>
+                <div class="text-xs md:text-sm text-brand-gray">Accessories</div>
               </div>
-              <div class="flex flex-col gap-0.25 text-right">
-                <div data-price class="font-semibold">{{price}}</div>
-                <div class="text-sm text-brand-gray empty:hidden"><s class="empty:hidden">{{sale_price}}</s></div>
+              <div class="flex flex-col gap-0.25 md:text-right">
+                <div data-price class="text-xs md:text-sm font-semibold">{{price}}</div>
+                <div class="text-xs md:text-sm text-brand-gray empty:hidden"><s class="empty:hidden">{{sale_price}}</s></div>
               </div>
             </div>
             <div class="flex justify-between">
             </div>
-            <div class="text-sm text-brand-gray"><span class="text-orange-300 text-xl">&starf;</span>4.9(98)</div>
+            <div class="text-xs md:text-sm text-brand-gray"><span class="text-orange-300 text-xl">&starf;</span>4.9(98)</div>
           </div>
           <button data-add-to-cart class="button cloud p-0 max-w-9 h-9 flex gap-0 overflow-hidden justify-start items-center absolute top-4 right-4 group transition-all hover:justify-between hover:max-w-full duration-500 text-nowrap delay-[0]">
             <span class="px-2.5 flex items-center">
