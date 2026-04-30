@@ -5,15 +5,11 @@ const EVENTS = {
   CLOSE_CART_DRAWER: 'close-cart-drawer',
   OPEN_IMAGE_VIEWER: 'open-image-viewer',
   CLOSE_IMAGE_VIEWER: 'close-image-viewer',
-  OPEN_MOBILE_MENU: 'open-mobile-menu',
-  CLOSE_MOBILE_MENU: 'close-mobile-menu'
 }
 
 const VARIABLES = {
   cart: []
 }
-
-
 
 class SearchBar extends HTMLElement {
   constructor() {
@@ -682,3 +678,39 @@ class MobileMenu extends HTMLElement {
 }
 
 customElements.define('mobile-menu', MobileMenu)
+
+
+class ProductFilter extends HTMLElement {
+  constructor() {
+    super();
+    this.open = this.open.bind(this)
+    this.close = this.close.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  connectedCallback() {
+    document.addEventListener('click', this.handleClick)
+  }
+  disconnectedCallback() {
+    document.removeEventListener('click', this.handleClick)
+  }
+  handleClick(event) {
+    console.log(event.target.closest('product-filter'), event.target.parentNode);
+
+    if (event.target.closest('.open-product-filter') && !document.documentElement.classList.add('product-filter-open')) {
+      this.open();
+    } else if (event.target.closest('.close-product-filter') && !document.documentElement.classList.add('product-filter-open')) {
+      this.close();
+    } else if (event.target.closest('product-filter') == event.target.parentNode) {
+      this.close();
+    }
+  }
+  open() {
+    document.documentElement.classList.add('product-filter-open');
+  }
+  close() {
+    document.documentElement.classList.remove('product-filter-open');
+  }
+}
+
+customElements.define('product-filter', ProductFilter)
+

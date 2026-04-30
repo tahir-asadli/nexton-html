@@ -19,31 +19,39 @@
   <!-- Header -->
   <header class="border-b border-brand-silver">
     <div class="container relative bg-white z-1">
-      <div class="flex gap-2 justify-center items-center h-25">
-        <div>
+      <div class="flex gap-2 justify-center items-center h-16 sm:h-25">
+        <div class="shrink-0 flex items-center">
           <a href="/" class="inline-flex rounded-xl">
-            <img src="assets/logo.svg" alt="">
+            <img src="assets/mobile-logo.svg" alt="Logo" class="block sm:hidden">
+            <img src="assets/logo.svg" alt="Logo" class="hidden sm:block">
           </a>
         </div>
-        <search-bar class="flex justify-center grow">
-          <form class="flex justify-center relative w-100">
-            <input type="text" class="search-input" name="q" value="" placeholder="Search in products...">
-            <svg class="size-5 text-brand-gray absolute left-8 top-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <search-bar class="flex justify-center shrink grow-0 md:shrink-0 md:grow max-w-60 sm:max-w-full mx-auto sm:mx-0">
+          <form class="flex justify-center relative md:w-100">
+            <input type="text" class="search-input w-full" name="q" value="" placeholder="Search in products...">
+            <svg class="size-4 sm:size-5 text-brand-gray absolute left-4 sm:left-8 top-2.5 sm:top-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9.58335 17.5C13.9556 17.5 17.5 13.9556 17.5 9.58333C17.5 5.21108 13.9556 1.66667 9.58335 1.66667C5.2111 1.66667 1.66669 5.21108 1.66669 9.58333C1.66669 13.9556 5.2111 17.5 9.58335 17.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M18.3334 18.3333L16.6667 16.6667" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <button data-clear class="absolute right-6 top-4 border border-brand-gray text-brand-black size-5 rounded-full flex justify-center items-center cursor-pointer" type="button">&times;</button>
+            <button data-clear class="absolute right-3 top-2.5 size-4 sm:right-6 sm:top-4 border border-brand-gray text-brand-black sm:size-5 rounded-full flex justify-center items-center cursor-pointer" type="button">&times;</button>
           </form>
         </search-bar>
-        <div class="flex gap-1 items-center ml-auto">
-          <a href="/" class="flex items-center justify-center p-2 rounded-xl">
+        <div class="flex gap-1 items-center sm:ml-auto">
+          <button class="open-mobile-menu button ghost rounded w-8 h-7 p-0 flex sm:hidden text-brand-gray">
+            <svg class=" w-8 h-7" width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="8" width="16" height="2" rx="1" fill="currentColor" />
+              <rect x="8" y="13" width="16" height="2" rx="1" fill="currentColor" />
+              <rect x="8" y="18" width="16" height="2" rx="1" fill="currentColor" />
+            </svg>
+          </button>
+          <a href="/" class="hidden sm:flex items-center justify-center p-2 rounded-xl">
             <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
           <cart-button>
-            <button data-button class="flex items-center justify-center p-2 rounded-xl relative cursor-pointer">
+            <button data-button class="hidden sm:flex items-center justify-center p-2 rounded-xl relative cursor-pointer">
               <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -60,83 +68,99 @@
   <!-- Collection -->
   <section class="mt-10">
     <div class="container">
-      <div class="grid grid-cols-[310px_auto] gap-5">
-        <div>
-          <form>
-            <fieldset>
-              <div class="border-b border-brand-silver mb-6 pb-7">
-                <h3 class="text-lg mb-6">Availability</h3>
-                <div class="flex flex-col gap-4 mb-6">
-                  <div class="flex gap-2 items-center">
-                    <input type="checkbox" id="in-stock">
-                    <label for="in-stock" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">In stock</label>
-                  </div>
-                  <div class="flex gap-2 items-center">
-                    <input type="checkbox" id="out-of-stock">
-                    <label for="out-of-stock" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">Out of stock</label>
-                  </div>
-                </div>
-              </div>
-              <div class="border-b border-brand-silver mb-6 pb-7">
-                <h3 class="text-lg mb-6">Size</h3>
-                <div class="flex flex-col gap-4 mb-6">
-                  <div class="flex gap-2 items-center">
-                    <input type="checkbox" id="40mm">
-                    <label for="40mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">40mm</label>
-                  </div>
-                  <div class="flex gap-2 items-center">
-                    <input type="checkbox" id="34mm">
-                    <label for="34mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">34mm</label>
-                  </div>
-                  <div class="flex gap-2 items-center">
-                    <input type="checkbox" id="43mm">
-                    <label for="43mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">43mm</label>
-                  </div>
-                  <div class="flex gap-2 items-center">
-                    <input type="checkbox" id="44mm">
-                    <label for="44mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">44mm</label>
-                  </div>
-                </div>
-              </div>
-              <div class="border-b border-brand-silver mb-6 pb-7">
-                <h3 class="text-lg mb-6">Price</h3>
-                <price-slider>
-                  <div data-slider data-min="1" data-max="10000" data-min-value="1" data-max-value="10000">
-                  </div>
-                  <div class="flex gap-6 items-center mt-4">
-                    <div class="flex flex-col gap-2 w-full">
-                      <div class="text-brand-gray">Min Price</div>
-                      <div class="flex w-full relative">
-                        <input type="number" class="text-input rounded-full w-full pr-7" price-min min="1" max="10000" value="1" name="min-value">
-                        <span class="absolute right-3 top-2.5 font-semibold text-brand-gray">$</span>
+      <div class="grid lg:grid-cols-[310px_auto] gap-5">
+        <product-filter>
+          <div class="">
+            <div class="hide-scrollbar">
+              <form>
+                <fieldset>
+                  <div class="border-b border-brand-silver mb-6 pb-2">
+                    <h3 class="text-lg mb-6">Availability</h3>
+                    <div class="flex flex-col gap-4 mb-6">
+                      <div class="flex gap-2 items-center">
+                        <input type="checkbox" id="in-stock">
+                        <label for="in-stock" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">In stock</label>
                       </div>
-                    </div>
-                    <div class="flex flex-col gap-2 w-full">
-                      <div class="text-brand-gray">Max Price</div>
-                      <div class="flex w-full relative">
-                        <input type="number" class="text-input rounded-full w-full pr-7" price-max min="1" max="10000" value="10000" name="max-value">
-                        <span class="absolute right-3 top-2.5 font-semibold text-brand-gray">$</span>
+                      <div class="flex gap-2 items-center">
+                        <input type="checkbox" id="out-of-stock">
+                        <label for="out-of-stock" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">Out of stock</label>
                       </div>
                     </div>
                   </div>
-                </price-slider>
-                <!-- <div class="w-40">
-                  <div data-range-slider data-min="1" data-max="10000" data-min-value="25" data-max-value="75" data-on-change="handlePriceChange">
+                  <div class="border-b border-brand-silver mb-6 pb-2">
+                    <h3 class="text-lg mb-6">Size</h3>
+                    <div class="flex flex-col gap-4 mb-6">
+                      <div class="flex gap-2 items-center">
+                        <input type="checkbox" id="40mm">
+                        <label for="40mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">40mm</label>
+                      </div>
+                      <div class="flex gap-2 items-center">
+                        <input type="checkbox" id="34mm">
+                        <label for="34mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">34mm</label>
+                      </div>
+                      <div class="flex gap-2 items-center">
+                        <input type="checkbox" id="43mm">
+                        <label for="43mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">43mm</label>
+                      </div>
+                      <div class="flex gap-2 items-center">
+                        <input type="checkbox" id="44mm">
+                        <label for="44mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">44mm</label>
+                      </div>
+                    </div>
                   </div>
-                </div> -->
-              </div>
-            </fieldset>
-          </form>
-        </div>
+                  <div class="mb-6 pb-2">
+                    <h3 class="text-lg mb-2">Price</h3>
+                    <price-slider>
+                      <div data-slider data-min="1" data-max="10000" data-min-value="1" data-max-value="10000">
+                      </div>
+                      <div class="flex gap-6 items-center mt-2">
+                        <div class="flex flex-col gap-2 w-full">
+                          <div class="text-brand-gray">Min Price</div>
+                          <div class="flex w-full relative">
+                            <input type="number" class="text-input rounded-full w-full pr-7" price-min min="1" max="10000" value="1" name="min-value">
+                            <span class="absolute right-3 top-2.5 font-semibold text-brand-gray">$</span>
+                          </div>
+                        </div>
+                        <div class="flex flex-col gap-2 w-full">
+                          <div class="text-brand-gray">Max Price</div>
+                          <div class="flex w-full relative">
+                            <input type="number" class="text-input rounded-full w-full pr-7" price-max min="1" max="10000" value="10000" name="max-value">
+                            <span class="absolute right-3 top-2.5 font-semibold text-brand-gray">$</span>
+                          </div>
+                        </div>
+                      </div>
+                    </price-slider>
+                  </div>
+                  <div class="flex justify-center w-full lg:hidden">
+                    <button class="button medium close-product-filter" type="button">Close</button>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </product-filter>
         <div>
           <div class="flex justify-between items-center gap-4 py-2 mb-2">
-            <h1 class="h3">Products</h1>
+            <h1 class="h3 hidden sm:block">Products</h1>
+            <button class="button cloud px-3 bg-white text-brand-gray lg:hidden open-product-filter">
+              <svg class="size-2.5" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_301_12163)">
+                  <path d="M8.405 -2.94996e-06H3.26167C2.3825 -2.94996e-06 1.66667 0.715414 1.66667 1.59541C1.66667 2.02125 1.8325 2.42166 2.13375 2.72333L4.58333 5.1725V6.66666C4.58333 6.79791 4.645 6.92125 4.75 7L6.41667 8.25C6.49 8.305 6.57833 8.33333 6.66667 8.33333C6.73 8.33333 6.79417 8.31875 6.85292 8.28958C6.99417 8.21916 7.08333 8.07458 7.08333 7.91666V5.1725L9.53292 2.72291C9.83417 2.42166 10 2.02083 10 1.595C10 0.715414 9.28417 -0.000419617 8.405 -0.000419617V-2.94996e-06ZM8.94375 2.13416L6.37208 4.70541C6.29375 4.78375 6.25 4.88958 6.25 5V7.08333L5.41667 6.45833V5C5.41667 4.88958 5.37292 4.78333 5.29458 4.70541L2.72292 2.13416C2.57917 1.99 2.5 1.79875 2.5 1.59541C2.5 1.17541 2.84167 0.83333 3.26167 0.83333H8.405C8.825 0.83333 9.16667 1.175 9.16667 1.59541C9.16667 1.79875 9.0875 1.99041 8.94375 2.13416ZM5.41667 8.75V9.58333C5.41667 9.74125 5.3275 9.88542 5.18625 9.95625C5.12708 9.98583 5.06333 10 5 10C4.91167 10 4.82333 9.97166 4.75 9.91666L3.08333 8.66666C2.97833 8.58833 2.91667 8.46458 2.91667 8.33333V6.83916L0.467083 4.39C0.165833 4.08833 0 3.68791 0 3.26208C0 2.79291 0.205417 2.34958 0.56375 2.04541C0.74 1.89625 1.0025 1.91791 1.15125 2.09333C1.3 2.26875 1.27875 2.53166 1.10333 2.68083C0.932083 2.82625 0.83375 3.03833 0.83375 3.2625C0.83375 3.46583 0.912917 3.6575 1.05667 3.80125L3.62833 6.3725C3.70667 6.45083 3.75042 6.55666 3.75042 6.66708V8.12541L4.58375 8.75041C4.58375 8.52041 4.77 8.33375 5.00042 8.33375C5.23083 8.33375 5.41708 8.52041 5.41708 8.75041L5.41667 8.75Z" fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_301_12163">
+                    <rect width="10" height="10" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>Filters</span>
+            </button>
             <div class="flex justify-end items-center gap-4 text-sm text-brand-gray">
-              <div>
+              <div class="hidden lg:block">
                 <div> Showing 9 of 9 Products </div>
               </div>
               <div class="flex gap-2 items-center">
-                <span>Sort by:</span>
+                <span class="hidden sm:block">Sort by:</span>
                 <select name="sort" class="select sort ml-auto lg:ml-0">
                   <option value="manual"> Featured </option>
                   <option value="most-relevant"> Most relevant </option>
@@ -151,7 +175,7 @@
               </div>
             </div>
           </div>
-          <div id="collection-products" class="grid grid-cols-3 gap-5">
+          <div id="collection-products" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
           </div>
           <div class="pagination">
             <span class="page current">1</span>
@@ -166,16 +190,17 @@
       </div>
     </div>
   </section>
+  <!-- Banner -->
   <section>
     <div class="container">
-      <div class="grid grid-cols-2 bg-brand-silver-400 py-10 rounded-4xl">
-        <div class="relative flex items-center py-13 pl-30">
-          <div class="flex flex-col gap-6">
+      <div class="grid grid-cols-2 bg-brand-silver-400 py-4 sm:py-6 md:py-8 lg:py-10 rounded-4xl">
+        <div class="relative flex items-center py-4 sm:py-6 md:py-8 lg:py-13 pl-6 sm:pl-16 md:pl-20 lg:pl-30">
+          <div class="flex flex-col gap-2 sm:gap-3 md:gap-4 lg:gap-6">
             <div>
-              <h4 class="text-brand-gray font-medium text-xl mb-4">100% Original Products</h4>
+              <h4 class="text-brand-gray font-medium lg:text-xl mb-4">100% Original Products</h4>
               <h2 class="">The All New Fashion Collection Items</h2>
             </div>
-            <h4 class="text-brand-gray font-normal text-xl">Starting from: $59.99</h4>
+            <h4 class="text-brand-gray font-normal lg:text-xl">Starting from: $59.99</h4>
             <div class="button-container">
               <a href="/" class="button  shadow">
                 <span>Shop now</span>
@@ -183,33 +208,12 @@
             </div>
           </div>
         </div>
-        <div class="flex relative justify-end">
-          <img class="absolute right-0 left-0 m-auto h-full" src="assets/images/banner.png" alt="">
+        <div class="flex relative justify-end items-center">
+          <img class="absolute right-0 left-0 m-auto h-30 md:h-50 lg:h-full" src="assets/images/banner.png" alt="">
         </div>
       </div>
     </div>
   </section>
-  <!-- Cart Drawer -->
-  <cart-drawer>
-    <div data-drawer class="absolute z-3 top-25 w-100">
-      <!-- transition-all  -->
-      <div data-drawer-container class="max-h-120 overflow-scroll border border-brand-silver bg-white/90 backdrop-blur-sm hide-scrollbar h-0 in-[.cart-drawer-open]:h-auto">
-        <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
-        <div data-drawer-container-inner class="flex flex-col">
-          <!-- max-h-114   -->
-          <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-fullborder-b border-brand-silver">
-            <div class="flex flex-col gap-3" data-drawer-items></div>
-            <div data-drawer-footer class="flex flex-col gap-2 items-center py-3">
-              <a href="/cart.html" class="button gray medium w-60">View cart</a>
-              <a href="/" class="button ghost medium w-60 bg-transparent underline">Continue shopping</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- in-[.cart-drawer-open]:block  -->
-    <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
-  </cart-drawer>
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -322,6 +326,63 @@
       <!-- <button class="close">&times;</button> -->
     </div>
   </image-viewer-window>
+  <!-- Mobile Menu -->
+  <mobile-menu class="hidden in-[.mobile-menu-open]:block">
+    <div class="flex items-center sm:hidden fixed top-0 left-0 w-[calc(100%-70px)] bg-white/50 backdrop-blur-3xl drop-shadow-2xl z-3 h-full">
+      <div class="w-5/6 h-5/6 mx-auto flex flex-col">
+        <div class="flex justify-center py-10">
+          <a href="/" class="inline-flex rounded-xl">
+            <img src="assets/logo.svg" alt="">
+          </a>
+        </div>
+        <div class="flex flex-col grow">
+          <ul class="flex flex-col justify-center items-center gap-2 px-10 py-20">
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Home</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Shop</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Collections</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">About</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Contact</a>
+            </li>
+          </ul>
+          <div class="mt-auto">
+            <div>
+              <div class="text-xs text-center"> Nexton eCommerce. © 2026 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mobile-menu>
+  <!-- Cart Drawer -->
+  <cart-drawer>
+    <div data-drawer class="absolute z-3 top-16 max-md:right-0 sm:top-25 w-full md:max-w-100 hidden in-[.cart-drawer-open]:block">
+      <!-- transition-all  -->
+      <div data-drawer-container class="max-h-120 overflow-scroll border border-brand-silver bg-white/90 backdrop-blur-sm hide-scrollbar h-0 in-[.cart-drawer-open]:h-auto">
+        <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
+        <div data-drawer-container-inner class="flex flex-col">
+          <!-- max-h-114   -->
+          <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-fullborder-b border-brand-silver">
+            <div class="flex flex-col gap-3" data-drawer-items></div>
+            <div data-drawer-footer class="flex flex-col gap-2 items-center py-3">
+              <a href="/cart.html" class="button gray medium w-60">View cart</a>
+              <a href="/" class="button ghost medium w-60 bg-transparent underline">Continue shopping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- in-[.cart-drawer-open]:block  -->
+    <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
+  </cart-drawer>
   <script>
     // Optional: Handle price changes
     window.handlePriceChange = (values, element) => {
