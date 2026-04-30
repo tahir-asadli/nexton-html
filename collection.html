@@ -129,10 +129,38 @@
           </form>
         </div>
         <div>
+          <div class="flex justify-between items-center gap-4 py-2 mb-2">
+            <h1 class="h3">Products</h1>
+            <div class="flex justify-end items-center gap-4 text-sm text-brand-gray">
+              <div>
+                <div> Showing 9 of 9 Products </div>
+              </div>
+              <div class="flex gap-2 items-center">
+                <span>Sort by:</span>
+                <select name="sort" class="select sort ml-auto lg:ml-0">
+                  <option value="manual"> Featured </option>
+                  <option value="most-relevant"> Most relevant </option>
+                  <option value="best-selling"> Best selling </option>
+                  <option value="title-ascending"> Alphabetically, A-Z </option>
+                  <option value="title-descending"> Alphabetically, Z-A </option>
+                  <option value="price-ascending"> Price, low to high </option>
+                  <option value="price-descending"> Price, high to low </option>
+                  <option value="created-ascending"> Date, old to new </option>
+                  <option value="created-descending"> Date, new to old </option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div id="collection-products" class="grid grid-cols-3 gap-5">
           </div>
-          <div>
-            <div id="sliderContainer"></div>
+          <div class="pagination">
+            <span class="page current">1</span>
+            <span class="page">
+              <a href="#" title="">2</a>
+            </span>
+            <span class="next">
+              <a href="#" title="">Next »</a>
+            </span>
           </div>
         </div>
       </div>
