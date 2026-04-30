@@ -36,7 +36,7 @@
           </form>
         </search-bar>
         <div class="flex gap-1 items-center sm:ml-auto">
-          <button class="button ghost rounded w-8 h-7 p-0 flex sm:hidden text-brand-gray">
+          <button class="open-mobile-menu button ghost rounded w-8 h-7 p-0 flex sm:hidden text-brand-gray">
             <svg class=" w-8 h-7" width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="8" y="8" width="16" height="2" rx="1" fill="currentColor" />
               <rect x="8" y="13" width="16" height="2" rx="1" fill="currentColor" />
@@ -431,28 +431,6 @@
       </div>
     </div>
   </section>
-  <!-- Cart Drawer -->
-  <!--  h-0 max-h-120 overflow-hidden -->
-  <cart-drawer>
-    <div data-drawer class="absolute z-3 top-16 max-md:right-0 sm:top-25 w-full md:max-w-100 hidden in-[.cart-drawer-open]:block">
-      <!-- transition-all  -->
-      <div data-drawer-container class="max-h-120 overflow-scroll border border-brand-silver bg-white/90 backdrop-blur-sm hide-scrollbar h-0 in-[.cart-drawer-open]:h-auto">
-        <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
-        <div data-drawer-container-inner class="flex flex-col">
-          <!-- max-h-114   -->
-          <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-fullborder-b border-brand-silver">
-            <div class="flex flex-col gap-3" data-drawer-items></div>
-            <div data-drawer-footer class="flex flex-col gap-2 items-center py-3">
-              <a href="/cart.html" class="button gray medium w-60">View cart</a>
-              <a href="/" class="button ghost medium w-60 bg-transparent underline">Continue shopping</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- in-[.cart-drawer-open]:block  -->
-    <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
-  </cart-drawer>
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -533,8 +511,8 @@
     </div>
     <div>
       <div class="container">
-        <div class="flex justify-between items-center py-8">
-          <div> Nexton eCommerce. © 2024 </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center py-8">
+          <div class="text-sm md:text-base"> Nexton eCommerce. © 2026 </div>
           <div class="flex justify-end">
             <img class="h-8" src="/assets/payment-icons@2x.png" alt="">
           </div>
@@ -542,6 +520,63 @@
       </div>
     </div>
   </footer>
+  <!-- Mobile Menu -->
+  <mobile-menu class="hidden in-[.mobile-menu-open]:block">
+    <div class="flex items-center sm:hidden fixed top-0 left-0 w-[calc(100%-70px)] bg-white/50 backdrop-blur-3xl drop-shadow-2xl z-2 h-full">
+      <div class="w-5/6 h-5/6 mx-auto flex flex-col">
+        <div class="flex justify-center py-10">
+          <a href="/" class="inline-flex rounded-xl">
+            <img src="assets/logo.svg" alt="">
+          </a>
+        </div>
+        <div class="flex flex-col grow">
+          <ul class="flex flex-col justify-center items-center gap-2 px-10 py-20">
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Home</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Shop</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Collections</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">About</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Contact</a>
+            </li>
+          </ul>
+          <div class="mt-auto">
+            <div>
+              <div class="text-xs text-center"> Nexton eCommerce. © 2026 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mobile-menu>
+  <!-- Cart Drawer -->
+  <cart-drawer>
+    <div data-drawer class="absolute z-3 top-16 max-md:right-0 sm:top-25 w-full md:max-w-100 hidden in-[.cart-drawer-open]:block">
+      <!-- transition-all  -->
+      <div data-drawer-container class="max-h-120 overflow-scroll border border-brand-silver bg-white/90 backdrop-blur-sm hide-scrollbar h-0 in-[.cart-drawer-open]:h-auto">
+        <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
+        <div data-drawer-container-inner class="flex flex-col">
+          <!-- max-h-114   -->
+          <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-fullborder-b border-brand-silver">
+            <div class="flex flex-col gap-3" data-drawer-items></div>
+            <div data-drawer-footer class="flex flex-col gap-2 items-center py-3">
+              <a href="/cart.html" class="button gray medium w-60">View cart</a>
+              <a href="/" class="button ghost medium w-60 bg-transparent underline">Continue shopping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- in-[.cart-drawer-open]:block  -->
+    <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
+  </cart-drawer>
   <script src="assets/main.js"></script>
   <script src="assets/components.js"></script>
 </body>

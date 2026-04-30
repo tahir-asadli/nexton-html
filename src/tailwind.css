@@ -371,6 +371,11 @@
   }
 }
 
+html.mobile-menu-open,
+html.mobile-menu-open body {
+  overflow: hidden;
+}
+
 price-slider .range-slider-container .range-slider-handle#handle-min,
 price-slider .range-slider-container .range-slider-handle#handle-max {
   width: 15px;

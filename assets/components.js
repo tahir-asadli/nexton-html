@@ -4,7 +4,9 @@ const EVENTS = {
   OPEN_CART_DRAWER: 'open-cart-drawer',
   CLOSE_CART_DRAWER: 'close-cart-drawer',
   OPEN_IMAGE_VIEWER: 'open-image-viewer',
-  CLOSE_IMAGE_VIEWER: 'close-image-viewer'
+  CLOSE_IMAGE_VIEWER: 'close-image-viewer',
+  OPEN_MOBILE_MENU: 'open-mobile-menu',
+  CLOSE_MOBILE_MENU: 'close-mobile-menu'
 }
 
 const VARIABLES = {
@@ -650,3 +652,33 @@ class PriceSlider extends HTMLElement {
 }
 
 customElements.define('price-slider', PriceSlider);
+
+class MobileMenu extends HTMLElement {
+  constructor() {
+    super();
+    this.open = this.open.bind(this)
+    this.close = this.close.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  connectedCallback() {
+    document.addEventListener('click', this.handleClick)
+  }
+  disconnectedCallback() {
+    document.removeEventListener('click', this.handleClick)
+  }
+  handleClick(event) {
+    if (event.target.closest('.open-mobile-menu') && !document.documentElement.classList.add('mobile-menu-open')) {
+      this.open();
+    } else if (!event.target.closest('mobile-menu')) {
+      this.close();
+    }
+  }
+  open() {
+    document.documentElement.classList.add('mobile-menu-open');
+  }
+  close() {
+    document.documentElement.classList.remove('mobile-menu-open');
+  }
+}
+
+customElements.define('mobile-menu', MobileMenu)
