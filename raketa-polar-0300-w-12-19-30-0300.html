@@ -10,10 +10,8 @@
   <script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <link href=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <link rel="stylesheet" href="assets/range-slider.css">
-  <script src="assets/range-slider.js"></script>
   <link href="./assets/tailwind.css" rel="stylesheet">
-  <title>Collection | NEXTON</title>
+  <title>Raketa Polar 0300 | NEXTON</title>
 </head>
 
 <body>
@@ -66,140 +64,173 @@
       </div>
     </div>
   </header>
-  <!-- Navigation -->
-  <section>
-    <div class="container mt-10">
-      <h1 class="h2 mb-3">Products</h1>
-      <!-- Breadcrumb -->
-      <div class="flex items-center gap-3 mb-0">
-        <a class="text-brand-gray" href="/">Home</a>
-        <span class="text-brand-gray text-xs">/</span>
-        <span class="text-brand-gray-400" href="/">Products</span>
-      </div>
-    </div>
-  </section>
-  <!-- Collection -->
+  <!-- Product -->
   <section class="mt-10">
     <div class="container">
-      <div class="grid lg:grid-cols-[310px_auto] gap-5">
-        <product-filter>
-          <div class="">
-            <div class="hide-scrollbar">
-              <form>
-                <fieldset>
-                  <div class="border-b border-brand-silver mb-6 pb-2">
-                    <h3 class="text-lg mb-6">Availability</h3>
-                    <div class="flex flex-col gap-4 mb-6">
-                      <div class="flex gap-2 items-center">
-                        <input type="checkbox" id="in-stock">
-                        <label for="in-stock" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">In stock</label>
-                      </div>
-                      <div class="flex gap-2 items-center">
-                        <input type="checkbox" id="out-of-stock">
-                        <label for="out-of-stock" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">Out of stock</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="border-b border-brand-silver mb-6 pb-2">
-                    <h3 class="text-lg mb-6">Size</h3>
-                    <div class="flex flex-col gap-4 mb-6">
-                      <div class="flex gap-2 items-center">
-                        <input type="checkbox" id="40mm">
-                        <label for="40mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">40mm</label>
-                      </div>
-                      <div class="flex gap-2 items-center">
-                        <input type="checkbox" id="34mm">
-                        <label for="34mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">34mm</label>
-                      </div>
-                      <div class="flex gap-2 items-center">
-                        <input type="checkbox" id="43mm">
-                        <label for="43mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">43mm</label>
-                      </div>
-                      <div class="flex gap-2 items-center">
-                        <input type="checkbox" id="44mm">
-                        <label for="44mm" class="text-sm text-brand-gray font-normal leading-none m-0 cursor-pointer block">44mm</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-6 pb-2">
-                    <h3 class="text-lg mb-2">Price</h3>
-                    <price-slider>
-                      <div data-slider data-min="1" data-max="10000" data-min-value="1" data-max-value="10000">
-                      </div>
-                      <div class="flex gap-6 items-center mt-2">
-                        <div class="flex flex-col gap-2 w-full">
-                          <div class="text-brand-gray">Min Price</div>
-                          <div class="flex w-full relative">
-                            <input type="number" class="text-input rounded-full w-full pr-7" price-min min="1" max="10000" value="1" name="min-value">
-                            <span class="absolute right-3 top-2.5 font-semibold text-brand-gray">$</span>
-                          </div>
-                        </div>
-                        <div class="flex flex-col gap-2 w-full">
-                          <div class="text-brand-gray">Max Price</div>
-                          <div class="flex w-full relative">
-                            <input type="number" class="text-input rounded-full w-full pr-7" price-max min="1" max="10000" value="10000" name="max-value">
-                            <span class="absolute right-3 top-2.5 font-semibold text-brand-gray">$</span>
-                          </div>
-                        </div>
-                      </div>
-                    </price-slider>
-                  </div>
-                  <div class="flex justify-center w-full lg:hidden">
-                    <button class="button medium close-product-filter" type="button">Close</button>
-                  </div>
-                </fieldset>
-              </form>
+      <product-form>
+        <div class="grid lg:grid-cols-7 gap-8">
+          <div class="lg:col-span-4 grid grid-cols-[50px_auto] sm:grid-cols-[60px_auto] md:grid-cols-[70px_auto] lg:grid-cols-[80px_auto] xl:grid-cols-[90px_auto] 2xl:grid-cols-[140px_auto] h-60 sm:h-80 md:h-100 lg:h-160 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+            <div class="product-thumbnail-slider splide h-60 sm:h-80 md:h-100 lg:h-160">
+              <div class="splide__track h-full!">
+                <ul class="splide__list flex! flex-col!">
+                  <li class="splide__slide inline-block w-full rounded-2xl overflow-hidden border! p-0.5 border-transparent [&.is-active]:border-brand-blue!">
+                    <span data-large="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300.webp" class="">
+                      <img data-img class="w-full h-full object-cover rounded-2xl" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300.webp" alt="Product">
+                    </span>
+                  </li>
+                  <li class="splide__slide inline-block w-full rounded-2xl overflow-hidden border! p-0.5 border-transparent [&.is-active]:border-brand-blue!">
+                    <span data-large="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-3-scaled.webp" class="">
+                      <img class="w-full h-full object-cover rounded-2xl" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-3-scaled.webp" alt="Product">
+                    </span>
+                  </li>
+                  <li class="splide__slide inline-block w-full rounded-2xl overflow-hidden border! p-0.5 border-transparent [&.is-active]:border-brand-blue!">
+                    <span data-large="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-4-scaled.webp" class="">
+                      <img class="w-full h-full object-cover rounded-2xl" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-4-scaled.webp" alt="Product">
+                    </span>
+                  </li>
+                  <li class="splide__slide inline-block w-full rounded-2xl overflow-hidden border! p-0.5 border-transparent [&.is-active]:border-brand-blue!">
+                    <span data-large="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-8-scaled.webp" class="">
+                      <img class="w-full h-full object-cover rounded-2xl" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-8-scaled.webp" alt="Product">
+                    </span>
+                  </li>
+                  <li class="splide__slide inline-block w-full rounded-2xl overflow-hidden border! p-0.5 border-transparent [&.is-active]:border-brand-blue!">
+                    <span data-large="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-10.webp" class="">
+                      <img class="w-full h-full object-cover rounded-2xl" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-10.webp" alt="Product">
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
+            <div class="min-h-0 product-main-slider splide h-60 sm:h-80 md:h-100 lg:h-160">
+              <div class="splide__track">
+                <ul class="splide__list">
+                  <li class="splide__slide h-60 sm:h-80 md:h-100 lg:h-160">
+                    <img class="w-full h-full object-contain md:object-cover object-top rounded-2xl cursor-pointer" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300.webp" alt="">
+                  </li>
+                  <li class="splide__slide h-60 sm:h-80 md:h-100 lg:h-160">
+                    <img class="w-full h-full object-contain md:object-cover object-top rounded-2xl cursor-pointer" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-3-scaled.webp" alt="">
+                  </li>
+                  <li class="splide__slide h-60 sm:h-80 md:h-100 lg:h-160">
+                    <img class="w-full h-full object-contain md:object-cover object-top rounded-2xl cursor-pointer" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-4-scaled.webp" alt="">
+                  </li>
+                  <li class="splide__slide h-60 sm:h-80 md:h-100 lg:h-160">
+                    <img class="w-full h-full object-contain md:object-cover object-top rounded-2xl cursor-pointer" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-8-scaled.webp" alt="">
+                  </li>
+                  <li class="splide__slide h-60 sm:h-80 md:h-100 lg:h-160">
+                    <img class="w-full h-full object-contain md:object-cover object-top rounded-2xl cursor-pointer" src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-10.webp" alt="">
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- <img class="w-full h-full object-contain" data-img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300.webp" alt=""> -->
           </div>
-        </product-filter>
-        <div>
-          <div class="flex justify-between items-center gap-4 py-2 mb-2">
-            <div class="hidden lg:block text-sm text-brand-gray">
-              <div> Showing 9 of 9 Products </div>
-            </div>
-            <button class="button cloud px-3 bg-white text-brand-gray lg:hidden open-product-filter">
-              <svg class="size-2.5" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_301_12163)">
-                  <path d="M8.405 -2.94996e-06H3.26167C2.3825 -2.94996e-06 1.66667 0.715414 1.66667 1.59541C1.66667 2.02125 1.8325 2.42166 2.13375 2.72333L4.58333 5.1725V6.66666C4.58333 6.79791 4.645 6.92125 4.75 7L6.41667 8.25C6.49 8.305 6.57833 8.33333 6.66667 8.33333C6.73 8.33333 6.79417 8.31875 6.85292 8.28958C6.99417 8.21916 7.08333 8.07458 7.08333 7.91666V5.1725L9.53292 2.72291C9.83417 2.42166 10 2.02083 10 1.595C10 0.715414 9.28417 -0.000419617 8.405 -0.000419617V-2.94996e-06ZM8.94375 2.13416L6.37208 4.70541C6.29375 4.78375 6.25 4.88958 6.25 5V7.08333L5.41667 6.45833V5C5.41667 4.88958 5.37292 4.78333 5.29458 4.70541L2.72292 2.13416C2.57917 1.99 2.5 1.79875 2.5 1.59541C2.5 1.17541 2.84167 0.83333 3.26167 0.83333H8.405C8.825 0.83333 9.16667 1.175 9.16667 1.59541C9.16667 1.79875 9.0875 1.99041 8.94375 2.13416ZM5.41667 8.75V9.58333C5.41667 9.74125 5.3275 9.88542 5.18625 9.95625C5.12708 9.98583 5.06333 10 5 10C4.91167 10 4.82333 9.97166 4.75 9.91666L3.08333 8.66666C2.97833 8.58833 2.91667 8.46458 2.91667 8.33333V6.83916L0.467083 4.39C0.165833 4.08833 0 3.68791 0 3.26208C0 2.79291 0.205417 2.34958 0.56375 2.04541C0.74 1.89625 1.0025 1.91791 1.15125 2.09333C1.3 2.26875 1.27875 2.53166 1.10333 2.68083C0.932083 2.82625 0.83375 3.03833 0.83375 3.2625C0.83375 3.46583 0.912917 3.6575 1.05667 3.80125L3.62833 6.3725C3.70667 6.45083 3.75042 6.55666 3.75042 6.66708V8.12541L4.58375 8.75041C4.58375 8.52041 4.77 8.33375 5.00042 8.33375C5.23083 8.33375 5.41708 8.52041 5.41708 8.75041L5.41667 8.75Z" fill="currentColor" />
-                </g>
-                <defs>
-                  <clipPath id="clip0_301_12163">
-                    <rect width="10" height="10" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-              <span>Filters</span>
-            </button>
-            <div class="flex justify-end items-center gap-4 text-sm text-brand-gray">
-              <div class="flex gap-2 items-center">
-                <span class="hidden sm:block">Sort by:</span>
-                <select name="sort" class="select sort ml-auto lg:ml-0">
-                  <option value="manual"> Featured </option>
-                  <option value="most-relevant"> Most relevant </option>
-                  <option value="best-selling"> Best selling </option>
-                  <option value="title-ascending"> Alphabetically, A-Z </option>
-                  <option value="title-descending"> Alphabetically, Z-A </option>
-                  <option value="price-ascending"> Price, low to high </option>
-                  <option value="price-descending"> Price, high to low </option>
-                  <option value="created-ascending"> Date, old to new </option>
-                  <option value="created-descending"> Date, new to old </option>
-                </select>
+          <div class="lg:col-span-3">
+            <div class="border border-brand-silver rounded-2xl p-8">
+              <h1 class="text-2xl mb-4" data-title>BENRUS #3061 GT</h1>
+              <div class="flex gap-2 justify-between">
+                <div class="flex gap-2">
+                  <span>
+                    <svg class="size-5 text-brand-yellow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.98999 2.67496C9.36333 1.77746 10.6367 1.77746 11.01 2.67496L12.745 6.84746L17.2483 7.20829C18.2183 7.28579 18.6117 8.49579 17.8725 9.12912L14.4417 12.0683L15.4892 16.4625C15.715 17.4091 14.6858 18.1566 13.8558 17.65L9.99999 15.295L6.14416 17.65C5.31416 18.1566 4.28499 17.4083 4.51083 16.4625L5.55833 12.0683L2.12749 9.12912C1.38833 8.49579 1.78166 7.28579 2.75166 7.20829L7.25499 6.84746L8.98999 2.67496Z" fill="currentColor" />
+                    </svg>
+                  </span>
+                  <span class="font-semibold text-brand-gray-400">4.9</span>
+                  <span>·</span>
+                  <a href="#" class="font-medium text-brand-gray-400 underline">124 reviews</a>
+                </div>
+                <div class="flex flex-col gap-0.5">
+                  <span class="font-semibold text-2xl">$169.99</span>
+                  <span class="text-sm text-brand-gray-400 text-right"><s>$199.99</s></span>
+                </div>
+              </div>
+              <div>
+                <form action="">
+                  <fieldset>
+                    <input type="hidden" name="price" value="169.99">
+                    <div class="mb-2">
+                      <div class="font-semibold mb-2">Material</div>
+                      <div class="flex flex-wrap gap-2">
+                        <div class="radio-button">
+                          <input name="material" type="radio" id="material-titanium">
+                          <label for="material-titanium">Titanium</label>
+                        </div>
+                        <div class="radio-button">
+                          <input name="material" type="radio" id="material-stainless-steel">
+                          <label for="material-stainless-steel">Stainless Steel</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-8">
+                      <div class="font-semibold mb-2">Case Size</div>
+                      <div class="flex flex-wrap gap-2">
+                        <div class="radio-button">
+                          <input name="size" type="radio" id="size-40mm">
+                          <label for="size-40mm">40mm</label>
+                        </div>
+                        <div class="radio-button">
+                          <input name="size" type="radio" id="size-34mm">
+                          <label for="size-34mm">34mm</label>
+                        </div>
+                        <div class="radio-button">
+                          <input name="size" type="radio" id="size-43mm">
+                          <label for="size-43mm">43mm</label>
+                        </div>
+                        <div class="radio-button">
+                          <input name="size" type="radio" id="size-44mm">
+                          <label for="size-44mm">44mm</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-between gap-2 items-center mb-8">
+                      <div>
+                        <quantity-input>
+                          <button type="button" data-minus>&minus;</button>
+                          <input type="number" value="1">
+                          <button type="button" data-plus>&plus;</button>
+                        </quantity-input>
+                      </div>
+                      <div>
+                        <button data-add-to-cart class="button lg:h-13">
+                          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.33329 7.33337C5.70149 7.33337 5.99996 7.63185 5.99996 8.00004C5.99996 9.10461 6.89539 10 7.99996 10C9.10453 10 9.99996 9.10461 9.99996 8.00004C9.99996 7.63185 10.2984 7.33337 10.6666 7.33337C11.0348 7.33337 11.3333 7.63185 11.3333 8.00004C11.3333 9.84098 9.8409 11.3334 7.99996 11.3334C6.15902 11.3334 4.66663 9.84098 4.66663 8.00004C4.66663 7.63185 4.9651 7.33337 5.33329 7.33337Z" fill="currentColor" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3333 4.66663H12.7584C13.8077 4.66663 14.6786 5.47752 14.7534 6.52414L15.1275 11.7625C15.2654 13.692 13.7371 15.3333 11.8027 15.3333H4.19722C2.26275 15.3333 0.734525 13.692 0.872351 11.7625L1.24652 6.52414C1.32128 5.47752 2.19215 4.66663 3.24143 4.66663H4.66661V3.99996C4.66661 2.15902 6.159 0.666626 7.99994 0.666626C9.84088 0.666626 11.3333 2.15902 11.3333 3.99996V4.66663ZM5.99994 4.66663H9.99994V3.99996C9.99994 2.89539 9.10451 1.99996 7.99994 1.99996C6.89537 1.99996 5.99994 2.89539 5.99994 3.99996V4.66663ZM3.24143 5.99996C2.89167 5.99996 2.60138 6.27025 2.57646 6.61912L2.20231 11.8575C2.1196 13.0152 3.03653 14 4.19722 14H11.8027C12.9634 14 13.8803 13.0152 13.7976 11.8575L13.4234 6.61912C13.3985 6.27025 13.1082 5.99996 12.7584 5.99996H3.24143Z" fill="currentColor" />
+                          </svg>
+                          <span> Add to cart </span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <div class="flex flex-col gap-2 mb-2 border-b border-brand-silver text-brand-gray pb-4">
+                        <div class="flex justify-between">
+                          <span>$<span data-price>169.99</span> x <span data-quantity>1</span></span>
+                          <span>$<span data-total>169.99</span></span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span>Tax estimate</span>
+                          <span>$0</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-between font-semibold text-brand-black">
+                        <span>Total</span>
+                        <span>$<span data-total>169.99</span></span>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
               </div>
             </div>
           </div>
-          <div id="collection-products" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          </div>
-          <div class="pagination">
-            <span class="page current">1</span>
-            <span class="page">
-              <a href="#" title="">2</a>
-            </span>
-            <span class="next">
-              <a href="#" title="">Next »</a>
-            </span>
-          </div>
         </div>
+      </product-form>
+    </div>
+  </section>
+  <!-- Recommended products -->
+  <section class="my-5 sm:my-10 md:my-15 lg:my-20">
+    <div class="container">
+      <div class="mb-10">
+        <h2>Recommended products</h2>
       </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-5" id="best-sellers"></div>
     </div>
   </section>
   <!-- Banner -->
@@ -229,7 +260,7 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4 py-15">
+      <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 py-15">
         <div>
           <div class="mb-5">
             <a href="/" class="inline-flex rounded-xl">
@@ -306,8 +337,8 @@
     </div>
     <div>
       <div class="container">
-        <div class="flex justify-between items-center py-8">
-          <div> Nexton eCommerce. © 2024 </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center py-8">
+          <div class="text-sm md:text-base"> Nexton eCommerce. © 2026 </div>
           <div class="flex justify-end">
             <img class="h-8" src="/assets/payment-icons@2x.png" alt="">
           </div>
@@ -317,7 +348,7 @@
   </footer>
   <!-- Mobile Menu -->
   <mobile-menu class="hidden in-[.mobile-menu-open]:block">
-    <div class="flex items-center sm:hidden fixed top-0 left-0 w-[calc(100%-70px)] bg-white/50 backdrop-blur-3xl drop-shadow-2xl z-3 h-full">
+    <div class="flex items-center sm:hidden fixed top-0 left-0 w-[calc(100%-70px)] bg-white/50 backdrop-blur-3xl drop-shadow-2xl z-2 h-full">
       <div class="w-5/6 h-5/6 mx-auto flex flex-col">
         <div class="flex justify-center py-10">
           <a href="/" class="inline-flex rounded-xl">
@@ -372,6 +403,29 @@
     <!-- in-[.cart-drawer-open]:block  -->
     <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
   </cart-drawer>
+  <image-viewer-window class="hidden in-[.image-viewer-open]:flex">
+    <div class="">
+      <div>
+        <main>
+          <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300.webp" alt="Product">
+          <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-3-scaled.webp" alt="Product">
+          <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-4-scaled.webp" alt="Product">
+          <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-8-scaled.webp" alt="Product">
+          <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-10.webp" alt="Product">
+        </main>
+        <nav>
+          <div>
+            <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300.webp" alt="Product">
+            <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-3-scaled.webp" alt="Product">
+            <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-4-scaled.webp" alt="Product">
+            <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-8-scaled.webp" alt="Product">
+            <img src="/assets/watches/raketa-polar-0300-w-12-19-30-0300/gallery/raketa-polar-0300-w-12-19-30-0300-10.webp" alt="Product">
+          </div>
+        </nav>
+      </div>
+      <!-- <button class="close">&times;</button> -->
+    </div>
+  </image-viewer-window>
   <script src="assets/main.js"></script>
   <script src="assets/components.js"></script>
 </body>
