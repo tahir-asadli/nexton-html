@@ -75,6 +75,7 @@ class CartButton extends HTMLElement {
   }
 
   updateCart(event, initial = false) {
+
     this.cartCount.textContent = cart.count ? cart.count : '';
     if (initial !== true) {
       this.cartCount.classList.add('animate-cart');
@@ -140,6 +141,7 @@ class CartDrawer extends HTMLElement {
   }
 
   openDrawer(event) {
+
     document.documentElement.classList.add('cart-drawer-open');
     const items = cart.items();
     if (items.length) {
@@ -402,7 +404,7 @@ class ProductForm extends HTMLElement {
     super();
     this.quantityInput = this.querySelector("[type=\"number\"]");
     this.quantityPrice = this.querySelector("[name=\"price\"]");
-    this.addToCartButton = this.querySelector('button[data-add]')
+    this.addToCartButton = this.querySelector('button[data-add-to-cart]')
     this.quantities = this.querySelectorAll('span[data-quantity]')
     this.totals = this.querySelectorAll('span[data-total]')
     this.productTitle = this.querySelector('h1[data-title]')
@@ -439,13 +441,30 @@ class ProductForm extends HTMLElement {
       gap: 10,
       rewind: true,
       pagination: false,
+      arrows: false,
       isNavigation: true, // Critical for clickable thumbs
       direction: 'ttb', // Vertical direction
       height: '640px', // Must specify a height for vertical mode
       breakpoints: {
-        600: {
+        640: {
+          fixedWidth: 50,
+          fixedHeight: 60,
+        },
+        768: {
           fixedWidth: 60,
-          fixedHeight: 44,
+          fixedHeight: 60,
+        },
+        1024: {
+          fixedWidth: 70,
+          fixedHeight: 70,
+        },
+        1280: {
+          fixedWidth: 80,
+          fixedHeight: 80,
+        },
+        1536: {
+          fixedWidth: 90,
+          fixedHeight: 90,
         },
       },
     });
@@ -694,8 +713,6 @@ class ProductFilter extends HTMLElement {
     document.removeEventListener('click', this.handleClick)
   }
   handleClick(event) {
-    console.log(event.target.closest('product-filter'), event.target.parentNode);
-
     if (event.target.closest('.open-product-filter') && !document.documentElement.classList.add('product-filter-open')) {
       this.open();
     } else if (event.target.closest('.close-product-filter') && !document.documentElement.classList.add('product-filter-open')) {

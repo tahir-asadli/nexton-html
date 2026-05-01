@@ -65,6 +65,18 @@
       </div>
     </div>
   </header>
+  <!-- Navigation -->
+  <section>
+    <div class="container mt-10">
+      <h1 class="h2 mb-3">Products</h1>
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-3 mb-0">
+        <a class="text-brand-gray" href="/">Home</a>
+        <span class="text-brand-gray text-xs">/</span>
+        <span class="text-brand-gray-400" href="/">Products</span>
+      </div>
+    </div>
+  </section>
   <!-- Collection -->
   <section class="mt-10">
     <div class="container">
@@ -141,7 +153,9 @@
         </product-filter>
         <div>
           <div class="flex justify-between items-center gap-4 py-2 mb-2">
-            <h1 class="h3 hidden sm:block">Products</h1>
+            <div class="hidden lg:block text-sm text-brand-gray">
+              <div> Showing 9 of 9 Products </div>
+            </div>
             <button class="button cloud px-3 bg-white text-brand-gray lg:hidden open-product-filter">
               <svg class="size-2.5" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_301_12163)">
@@ -156,9 +170,6 @@
               <span>Filters</span>
             </button>
             <div class="flex justify-end items-center gap-4 text-sm text-brand-gray">
-              <div class="hidden lg:block">
-                <div> Showing 9 of 9 Products </div>
-              </div>
               <div class="flex gap-2 items-center">
                 <span class="hidden sm:block">Sort by:</span>
                 <select name="sort" class="select sort ml-auto lg:ml-0">
@@ -303,29 +314,6 @@
       </div>
     </div>
   </footer>
-  <image-viewer-window class="hidden in-[.image-viewer-open]:flex">
-    <div class="">
-      <div>
-        <main>
-          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02.webp" alt="Product">
-          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-1.webp" alt="Product">
-          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-2.webp" alt="Product">
-          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-3.webp" alt="Product">
-          <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-4.webp" alt="Product">
-        </main>
-        <nav>
-          <div>
-            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02.webp" alt="Product">
-            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-1.webp" alt="Product">
-            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-2.webp" alt="Product">
-            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-3.webp" alt="Product">
-            <img src="/assets/watches/benrus-3061-bor-3061-ss-s-039-03/gallery/benrus-3061-gt-3061-ss-g-039-02-4.webp" alt="Product">
-          </div>
-        </nav>
-      </div>
-      <!-- <button class="close">&times;</button> -->
-    </div>
-  </image-viewer-window>
   <!-- Mobile Menu -->
   <mobile-menu class="hidden in-[.mobile-menu-open]:block">
     <div class="flex items-center sm:hidden fixed top-0 left-0 w-[calc(100%-70px)] bg-white/50 backdrop-blur-3xl drop-shadow-2xl z-3 h-full">
@@ -383,12 +371,6 @@
     <!-- in-[.cart-drawer-open]:block  -->
     <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
   </cart-drawer>
-  <script>
-    // Optional: Handle price changes
-    window.handlePriceChange = (values, element) => {
-      console.log(values, element);
-    }
-  </script>
   <script src="assets/main.js"></script>
   <script src="assets/components.js"></script>
 </body>

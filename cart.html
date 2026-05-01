@@ -17,31 +17,39 @@
   <!-- Header -->
   <header class="border-b border-brand-silver">
     <div class="container relative bg-white z-1">
-      <div class="flex gap-2 justify-center items-center h-25">
-        <div>
+      <div class="flex gap-2 justify-center items-center h-16 sm:h-25">
+        <div class="shrink-0 flex items-center">
           <a href="/" class="inline-flex rounded-xl">
-            <img src="assets/logo.svg" alt="">
+            <img src="assets/mobile-logo.svg" alt="Logo" class="block sm:hidden">
+            <img src="assets/logo.svg" alt="Logo" class="hidden sm:block">
           </a>
         </div>
-        <search-bar class="flex justify-center grow">
-          <form class="flex justify-center relative w-100">
-            <input type="text" class="search-input" name="q" value="" placeholder="Search in products...">
-            <svg class="size-5 text-brand-gray absolute left-8 top-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <search-bar class="flex justify-center shrink grow-0 md:shrink-0 md:grow max-w-60 sm:max-w-full mx-auto sm:mx-0">
+          <form class="flex justify-center relative md:w-100">
+            <input type="text" class="search-input w-full" name="q" value="" placeholder="Search in products...">
+            <svg class="size-4 sm:size-5 text-brand-gray absolute left-4 sm:left-8 top-2.5 sm:top-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9.58335 17.5C13.9556 17.5 17.5 13.9556 17.5 9.58333C17.5 5.21108 13.9556 1.66667 9.58335 1.66667C5.2111 1.66667 1.66669 5.21108 1.66669 9.58333C1.66669 13.9556 5.2111 17.5 9.58335 17.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M18.3334 18.3333L16.6667 16.6667" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <button data-clear class="absolute right-6 top-4 border border-brand-gray text-brand-black size-5 rounded-full flex justify-center items-center cursor-pointer" type="button">&times;</button>
+            <button data-clear class="absolute right-3 top-2.5 size-4 sm:right-6 sm:top-4 border border-brand-gray text-brand-black sm:size-5 rounded-full flex justify-center items-center cursor-pointer" type="button">&times;</button>
           </form>
         </search-bar>
-        <div class="flex gap-1 items-center ml-auto">
-          <a href="/" class="flex items-center justify-center p-2 rounded-xl">
+        <div class="flex gap-1 items-center sm:ml-auto">
+          <button class="open-mobile-menu button ghost rounded w-8 h-7 p-0 flex sm:hidden text-brand-gray">
+            <svg class=" w-8 h-7" width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="8" width="16" height="2" rx="1" fill="currentColor" />
+              <rect x="8" y="13" width="16" height="2" rx="1" fill="currentColor" />
+              <rect x="8" y="18" width="16" height="2" rx="1" fill="currentColor" />
+            </svg>
+          </button>
+          <a href="/" class="hidden sm:flex items-center justify-center p-2 rounded-xl">
             <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
           <cart-button>
-            <button data-button class="flex items-center justify-center p-2 rounded-xl relative cursor-pointer">
+            <button data-button class="hidden sm:flex items-center justify-center p-2 rounded-xl relative cursor-pointer">
               <svg class="size-6 text-brand-gray" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -60,14 +68,14 @@
     <div class="container mt-10">
       <h1 class="h2 mb-3">Cart</h1>
       <!-- Breadcrumb -->
-      <div class="flex items-center gap-3 mb-12">
+      <div class="flex items-center gap-3 mb-0">
         <a class="text-brand-gray" href="/">Home</a>
         <span class="text-brand-gray text-xs">/</span>
         <span class="text-brand-gray-400" href="/">Cart</span>
       </div>
     </div>
   </section>
-  <section>
+  <section class="mt-10">
     <div class="container">
       <div class="grid lg:grid-cols-12 gap-10 mb-20">
         <div class="lg:col-span-7">
@@ -210,30 +218,34 @@
     </div>
   </section>
   <!-- Cart Drawer -->
-  <cart-drawer>
-    <div data-drawer class="absolute z-3 top-25 w-100">
-      <!-- transition-all  -->
-      <div data-drawer-container class="max-h-120 overflow-scroll border border-brand-silver bg-white/90 backdrop-blur-sm hide-scrollbar h-0 in-[.cart-drawer-open]:h-auto">
-        <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
-        <div data-drawer-container-inner class="flex flex-col">
-          <!-- max-h-114   -->
-          <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-fullborder-b border-brand-silver">
-            <div class="flex flex-col gap-3" data-drawer-items></div>
-            <div data-drawer-footer class="flex flex-col gap-2 items-center py-3">
-              <a href="/cart.html" class="button gray medium w-60">View cart</a>
-              <a href="/" class="button ghost medium w-60 bg-transparent underline">Continue shopping</a>
+  <!-- Banner -->
+  <section>
+    <div class="container">
+      <div class="grid grid-cols-2 bg-brand-silver-400 py-4 sm:py-6 md:py-8 lg:py-10 rounded-4xl">
+        <div class="relative flex items-center py-4 sm:py-6 md:py-8 lg:py-13 pl-6 sm:pl-16 md:pl-20 lg:pl-30">
+          <div class="flex flex-col gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+            <div>
+              <h4 class="text-brand-gray font-medium lg:text-xl mb-4">100% Original Products</h4>
+              <h2 class="">The All New Fashion Collection Items</h2>
+            </div>
+            <h4 class="text-brand-gray font-normal lg:text-xl">Starting from: $59.99</h4>
+            <div class="button-container">
+              <a href="/" class="button  shadow">
+                <span>Shop now</span>
+              </a>
             </div>
           </div>
         </div>
+        <div class="flex relative justify-end items-center">
+          <img class="absolute right-0 left-0 m-auto h-30 md:h-50 lg:h-full" src="assets/images/banner.png" alt="">
+        </div>
       </div>
     </div>
-    <!-- in-[.cart-drawer-open]:block  -->
-    <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
-  </cart-drawer>
+  </section>
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4 py-15">
+      <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 py-15">
         <div>
           <div class="mb-5">
             <a href="/" class="inline-flex rounded-xl">
@@ -310,8 +322,8 @@
     </div>
     <div>
       <div class="container">
-        <div class="flex justify-between items-center py-8">
-          <div> Nexton eCommerce. © 2024 </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center py-8">
+          <div class="text-sm md:text-base"> Nexton eCommerce. © 2026 </div>
           <div class="flex justify-end">
             <img class="h-8" src="/assets/payment-icons@2x.png" alt="">
           </div>
@@ -319,6 +331,63 @@
       </div>
     </div>
   </footer>
+  <!-- Mobile Menu -->
+  <mobile-menu class="hidden in-[.mobile-menu-open]:block">
+    <div class="flex items-center sm:hidden fixed top-0 left-0 w-[calc(100%-70px)] bg-white/50 backdrop-blur-3xl drop-shadow-2xl z-2 h-full">
+      <div class="w-5/6 h-5/6 mx-auto flex flex-col">
+        <div class="flex justify-center py-10">
+          <a href="/" class="inline-flex rounded-xl">
+            <img src="assets/logo.svg" alt="">
+          </a>
+        </div>
+        <div class="flex flex-col grow">
+          <ul class="flex flex-col justify-center items-center gap-2 px-10 py-20">
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Home</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Shop</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Collections</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">About</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-brand-gray">Contact</a>
+            </li>
+          </ul>
+          <div class="mt-auto">
+            <div>
+              <div class="text-xs text-center"> Nexton eCommerce. © 2026 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mobile-menu>
+  <!-- Cart Drawer -->
+  <cart-drawer>
+    <div data-drawer class="absolute z-3 top-16 max-md:right-0 sm:top-25 w-full md:max-w-100 hidden in-[.cart-drawer-open]:block">
+      <!-- transition-all  -->
+      <div data-drawer-container class="max-h-120 overflow-scroll border border-brand-silver bg-white/90 backdrop-blur-sm hide-scrollbar h-0 in-[.cart-drawer-open]:h-auto">
+        <!-- <button class="absolute right-6 top-4 border border-brand-gray text-brand-black size-6 rounded-full flex justify-center items-center cursor-pointer bg-white z-2" data-close>&times;</button> -->
+        <div data-drawer-container-inner class="flex flex-col">
+          <!-- max-h-114   -->
+          <div data-drawer-content class="px-6 py-6 flex flex-col gap-6 w-fullborder-b border-brand-silver">
+            <div class="flex flex-col gap-3" data-drawer-items></div>
+            <div data-drawer-footer class="flex flex-col gap-2 items-center py-3">
+              <a href="/cart.html" class="button gray medium w-60">View cart</a>
+              <a href="/" class="button ghost medium w-60 bg-transparent underline">Continue shopping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- in-[.cart-drawer-open]:block  -->
+    <div data-overlay class="hidden fixed top-0 left-0 bg-transparent w-full h-full z-2"></div>
+  </cart-drawer>
   <script src="assets/main.js"></script>
   <script src="assets/components.js"></script>
 </body>

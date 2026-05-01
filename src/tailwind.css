@@ -130,7 +130,7 @@
 }
 @layer components {
   .button {
-    @apply inline-flex justify-center items-center gap-2.5 bg-brand-black text-white rounded-full py-1 md:py-2 lg:py-3.5 px-3 md:px-6 lg:px-9 cursor-pointer hover:bg-brand-black-400 active:bg-black transition border border-transparent outline-offset-1 text-xs sm:text-sm md:text-base;
+    @apply inline-flex justify-center items-center gap-2.5 bg-brand-black text-white rounded-full py-2 md:py-2.5 lg:py-3.5 px-3 md:px-6 lg:px-9 cursor-pointer hover:bg-brand-black-400 active:bg-black transition border border-transparent outline-offset-1 text-xs sm:text-sm md:text-base;
   }
   .button.gray {
     @apply bg-brand-gray hover:bg-brand-gray-400 active:bg-brand-gray-600;
@@ -156,10 +156,10 @@
     @apply disabled:bg-brand-silver disabled:text-brand-gray disabled:cursor-not-allowed disabled:opacity-70;
   }
   .button.medium {
-    @apply py-0.5 md:py-1.5 lg:py-2.5 px-7;
+    @apply py-2 md:py-2.5 lg:py-2 px-7;
   }
   .button.large {
-    @apply py-1.5 md:py-2.5 lg:py-4.75;
+    @apply py-2.5 md:py-3 lg:py-4.75;
   }
   .button svg {
     @apply size-3 md:size-4 lg:size-5;
@@ -190,7 +190,7 @@
     @apply sr-only;
   }
   .radio-button label {
-    @apply inline-flex justify-center items-center rounded-xl cursor-pointer py-3 px-6 text-brand-gray bg-white transition select-none min-w-18 border border-brand-silver;
+    @apply inline-flex justify-center items-center rounded-xl cursor-pointer py-1.5 md:py-2 lg:py-3 px-2 md:px-4 lg:px-6 text-brand-gray bg-white transition select-none min-w-18 border border-brand-silver text-xs sm:text-sm md:text-base font-normal lg:font-semibold;
   }
   .radio-button input:checked + label {
     @apply bg-brand-blue border-transparent text-white;
@@ -235,7 +235,7 @@
 
   /* Quantity-component */
   quantity-input {
-    @apply inline-flex items-center rounded-full overflow-hidden h-10 bg-brand-cloud px-3;
+    @apply inline-flex items-center rounded-full overflow-hidden h-9 md:h-10 bg-brand-cloud py-1.5 md:py-2 lg:py-3 px-2 md:px-4 lg:px-6;
   }
   quantity-input button {
     @apply size-6 bg-white text-black cursor-pointer transition-opacity hover:opacity-90 border border-brand-silver rounded-full;
@@ -294,7 +294,7 @@
   }
   image-viewer-window > div > div {
     /* hide-scrollbar */
-    @apply grid grid-cols-[auto_150px] gap-5 overflow-scroll w-[70vw] h-[70vh] relative;
+    @apply grid grid-cols-[auto_50px] lg:grid-cols-[auto_150px] gap-5 overflow-scroll w-[90vw] h-[75vh] lg:w-[70vw] lg:h-[70vh] relative;
   }
   image-viewer-window main {
     @apply flex flex-col gap-2 rounded-2xl;
@@ -306,7 +306,7 @@
     @apply sticky top-0 h-[80vh] flex flex-col gap-2 overflow-scroll;
   }
   image-viewer-window nav > div img {
-    @apply w-full h-35 object-cover rounded-2xl cursor-pointer border border-black transition-all;
+    @apply w-full h-12 lg:h-35 object-cover rounded-2xl cursor-pointer border border-black transition-all;
   }
   image-viewer-window nav > div img.in-view {
     @apply border-3 border-brand-blue;
